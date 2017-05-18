@@ -1,0 +1,8 @@
+CREATE TABLE RecentSearch (
+    _id	INTEGER PRIMARY KEY AUTOINCREMENT,
+    isText INT NOT NULL,
+    textSearch TEXT,
+    longitud DOUBLE,
+    latitud DOUBLE,
+    radio INT
+);

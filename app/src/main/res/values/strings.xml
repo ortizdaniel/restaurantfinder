@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">DemoPractiques</string>
+
+    <string name="app_name"></string>
+
+    <!-- Strings related to login -->
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="logo">Logo</string>
@@ -11,4 +14,28 @@
     <string name="send">Send</string>
     <string name="profile">Profile</string>
     <string name="favorite">Favorite</string>
+
+    <string name="please_wait">Please wait</string>
+
+    <!-- Strings related to Search Activity -->
+    <string name="search_activity_title">Search a location</string>
+    <string name="favorite_button_title">Favorites</string>
+    <string name="profile_button_title">Profile</string>
+    <string name="search_geolocation_button_desc">Button to show restaurants on the indicated radius</string>
+    <string name="search_clear_button_desc">Button to clear the text on the search text input</string>
+    <string name="search_search_text_input_hint">Search &#8230;</string>
+    <string name="search_search_radius_text_view">Search radius</string>
+    <string name="search_radius_km_text_view">1 km</string>
+    <string name="search_search_button">Search</string>
+    <string name="search_recent_searches">Recent Searches</string>
+    <string name="search_search_keyboard_button">Search</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="search_no_locations_found">No food locals were found</string>
+    <string name="search_recent_longitude">Lon</string>
+    <string name="search_recent_latitude">Lat</string>
+    <string name="search_recent_radius">Radius</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
