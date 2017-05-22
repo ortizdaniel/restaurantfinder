@@ -6,3 +6,13 @@ CREATE TABLE RecentSearch (
     latitud DOUBLE,
     radio INT
 );
+
+CREATE TABLE User{
+    _id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT,
+    apellidos TEXT,
+    profileImage TEXT,
+    email TEXT,
+    sexo CHAR,
+    description TEXT
+}
