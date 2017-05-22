@@ -10,8 +10,14 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/menu_sort_priority_button"
-        android:title="ordPrioridad"
+        android:id="@+id/menu_favorites_button"
+        android:title="@string/favorite_button_title"
+        android:icon="@mipmap/ic_favorite_button"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_profile_button"
+        android:title="@string/profile_button_title"
         android:icon="@mipmap/ic_profile_button"
         app:showAsAction="ifRoom"/>
 </menu>

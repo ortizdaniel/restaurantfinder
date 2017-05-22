@@ -121,7 +121,5 @@ public class ResultsListViewFragment extends Fragment {
         } else {
             return false;
         }
-
     }
-
 }
