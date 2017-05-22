@@ -47,13 +47,14 @@ public class SearchActivity extends AppCompatActivity {
     private ArrayList<RecentSearch> recentSearches;
     private RecentSearchesAdapter recentSearchesAdapter;
     private RecentSearch lastRecentSearch;
+    private boolean saveLastSearch;
     private RecentSearchesRepo recentSearchesRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-
+        saveLastSearch = false;
         LocationService.getInstance(getApplicationContext());
 
         radiusTextView = (TextView) findViewById(R.id.search_radius_km_text_view);
@@ -109,18 +110,22 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar_menu, menu);
+        inflater.inflate(R.menu.action_bar_menu_description, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_favorites_button:
-
+            case R.id.menu_fav_action_button:
+                Intent favoritesIntent = new Intent();
+                //TODO: añadir clase de favoritos
+                startActivity(favoritesIntent);
                 break;
-            case R.id.menu_profile_button:
-
+            case R.id.menu_profile_action_button:
+                Intent profileIntent = new Intent();
+                //TODO: añadir clase de perfil
+                startActivity(profileIntent);
                 break;
             default:
                 break;
@@ -163,6 +168,7 @@ public class SearchActivity extends AppCompatActivity {
         lastRecentSearch.setLatitude(location.getLatitude());
         lastRecentSearch.setLongitude(location.getLongitude());
         lastRecentSearch.setRadius(radius);
+        saveLastSearch = true;
         new AsyncRequest(this).execute(searchParameters);
     }
 
@@ -177,9 +183,15 @@ public class SearchActivity extends AppCompatActivity {
             lastRecentSearch = new RecentSearch();
             lastRecentSearch.setIsText(true);
             lastRecentSearch.setSearchText(searchEditText.getText().toString());
+            saveLastSearch = true;
             new AsyncRequest(this).execute(searchParameters);
         }
     }
+
+    public void makeSearchAsyncRequest(String searchParameters) {
+        new AsyncRequest(this).execute(searchParameters);
+    }
+
     private class AsyncRequest extends AsyncTask<String, Void, List<FoodLocal>> {
 
         private Context context;
@@ -212,11 +224,12 @@ public class SearchActivity extends AppCompatActivity {
                 Toast.makeText(context, getString(R.string.search_no_locations_found), Toast.LENGTH_SHORT)
                         .show();
             } else {
-
-                recentSearchesRepo.insertRecentSearch(lastRecentSearch);
-                recentSearches.add(0, lastRecentSearch);
-                recentSearchesAdapter.notifyDataSetChanged();
-                System.out.println(lastRecentSearch.isText());
+                if (saveLastSearch) {
+                    recentSearchesRepo.insertRecentSearch(lastRecentSearch);
+                    recentSearches.add(0, lastRecentSearch);
+                    recentSearchesAdapter.notifyDataSetChanged();
+                }
+                saveLastSearch = false;
                 ArrayList<FoodLocal> locationsList = new ArrayList<>(aList);
 
                 Intent intent = new Intent(context, ResultsActivity.class);

@@ -1,5 +1,6 @@
 package pprog2.salleurl.edu.practica_pprog2.activities;
 
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
@@ -113,6 +114,25 @@ public class ResultsActivity extends AppCompatActivity {
             }
         });
         actionBarSpinner.setAdapter(adapter);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_fav_action_button:
+                Intent favoritesIntent = new Intent();
+                //TODO: añadir la clase de favoritos
+                startActivity(favoritesIntent);
+                break;
+            case R.id.menu_profile_action_button:
+                Intent profileIntent = new Intent();
+                //TODO: añadir la clase de perfil
+                startActivity(profileIntent);
+                break;
+            default:
+                break;
+        }
         return true;
     }
 }
