@@ -11,9 +11,10 @@ CREATE TABLE User(
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT,
     apellidos TEXT,
-    profileImage TEXT,
-    email TEXT,
+    profileImage BLOB,
+    email TEXT UNIQUE,
     sexo CHAR,
+    password TEXT,
     description TEXT
 );
 

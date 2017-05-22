@@ -7,7 +7,7 @@ import pprog2.salleurl.edu.practica_pprog2.model.User;
  */
 
 public interface UsersRepo {
-    void addUser();
+    void addUser(User u);
     User getUser(String username, String password);
-    void updateUser();
+    void updateUser(User u);
 }

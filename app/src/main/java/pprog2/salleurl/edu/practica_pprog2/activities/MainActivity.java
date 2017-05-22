@@ -1,16 +1,17 @@
 package pprog2.salleurl.edu.practica_pprog2.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
+import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        usersRepo = new UserServiceDB(getApplicationContext());
+
         username = (TextInputEditText) findViewById(R.id.login);
         password = (TextInputEditText) findViewById(R.id.password);
     }
@@ -34,10 +37,11 @@ public class MainActivity extends AppCompatActivity {
             password.setError(getString(R.string.no_password));
         }else{
             User user = usersRepo.getUser(username.getText().toString(),password.getText().toString());
+
             // v Esto de debajo es para el que sergi pueda probar sin loggear v
-            if(user == null) {
+            /*if(user == null) {
                 user = new User();
-            }
+            }*/
             //User user = new User();
             //hasta aqui
             if(user == null){
@@ -45,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.unable_login), Toast.LENGTH_SHORT)
                         .show();
             }else{
+                Log.d("DANI", user.getEmail());
+                Log.d("DANI", user.getNombre());
                 /* Llamamos a la Activity de Busqueda */
                 Intent intent = new Intent(this,SearchActivity.class);
                 startActivity(intent);

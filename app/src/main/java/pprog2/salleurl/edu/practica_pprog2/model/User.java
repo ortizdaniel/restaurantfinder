@@ -1,6 +1,7 @@
 package pprog2.salleurl.edu.practica_pprog2.model;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 /**
  * Created by David on 22/05/2017.
@@ -11,21 +12,23 @@ public class User {
     public static char MALE = 'M';
     public static char FEMALE = 'F';
 
-    private Integer id;
     private String nombre;
-    private String[] apellidos;
+    private String apellidos;
     private Bitmap profileImage;
     private String email;
     private char sexo;
     private String description;
 
+    public User(){}
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
+    public User(String nombre,String  apellidos,byte[] image,String description,String email,char sexo){
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.description = description;
+        this.email = email;
+        this.sexo = sexo;
+        profileImage = BitmapFactory.decodeByteArray(image, 0, image.length);
+        //Environment.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
     }
 
     public String getNombre() {
@@ -36,11 +39,11 @@ public class User {
         this.nombre = nombre;
     }
 
-    public String[] getApellidos() {
+    public String getApellidos() {
         return apellidos;
     }
 
-    public void setApellidos(String[] apellidos) {
+    public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
 
@@ -74,5 +77,8 @@ public class User {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+    public String  getProfileImageName(){
+        return null;
     }
 }
