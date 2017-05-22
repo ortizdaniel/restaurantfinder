@@ -14,6 +14,8 @@
     <string name="send">Send</string>
     <string name="profile">Profile</string>
     <string name="favorite">Favorite</string>
+    <string name="no_login">Error: No login entered</string>
+    <string name="no_password">Error: No password entered</string>
 
     <string name="please_wait">Please wait</string>
 
