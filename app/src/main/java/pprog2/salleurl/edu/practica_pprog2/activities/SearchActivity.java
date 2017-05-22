@@ -116,10 +116,10 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_favorites_button:
+            case R.id.menu_fav_action_button:
 
                 break;
-            case R.id.menu_profile_button:
+            case R.id.menu_profile_action_button:
 
                 break;
             default:

@@ -14,5 +14,6 @@ CREATE TABLE User{
     profileImage TEXT,
     email TEXT,
     sexo CHAR,
+    password TEXT,
     description TEXT
 }
