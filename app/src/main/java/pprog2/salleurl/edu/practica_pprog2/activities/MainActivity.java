@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
     public void onRegisterButtonClick(View view){
         //TODO esperando a k dani haga su clase
         /* Llamamos a la actividad de Registro */
-        //Intent intent = new Intent(this, /*Register Activity.class*/);
-        //startActivity(intent);
+        Intent intent = new Intent(this, ActivityRegister.class);
+        startActivity(intent);
     }
 }
