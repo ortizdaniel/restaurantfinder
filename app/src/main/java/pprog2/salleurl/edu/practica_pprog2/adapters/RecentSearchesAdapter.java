@@ -43,7 +43,10 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearch> implements
         if (rs.isText()) {
             textToShow = rs.getSearchText();
         } else {
-            textToShow = "Lat = " + rs.getLatitude() + " Lon = " + rs.getLongitude() + " Radius = " + rs.getRadius() + " km";
+            textToShow = String.format(
+                        getContext().getString(R.string.latitude_abbreviation)  + " = %.4f " +
+                        getContext().getString(R.string.longitude_abbreviation) + " = %.4f " +
+                        getContext().getString(R.string.radius_abbreviation)    + " = %d km", rs.getLatitude(), rs.getLongitude(), rs.getRadius());
         }
 
         TextView text = (TextView) itemView.findViewById(R.id.recent_searches_list_view_item_text_view);

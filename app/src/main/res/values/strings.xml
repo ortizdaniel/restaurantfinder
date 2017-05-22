@@ -37,6 +37,12 @@
     <string name="search_recent_longitude">Lon</string>
     <string name="search_recent_latitude">Lat</string>
     <string name="search_recent_radius">Radius</string>
+    <string name="search_recent_is_empty_error">Search text is empty!</string>
+    <string name="longitude_abbreviation">Lon</string>
+    <string name="latitude_abbreviation">Lat</string>
+    <string name="radius_abbreviation">Radius</string>
+    <string name="all_types">ALL</string>
+    <string name="only_open">ONLY OPEN</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

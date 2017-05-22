@@ -37,15 +37,13 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         restaurantTypes = new ArrayList<>();
-        restaurantTypes.add("ALL");
+        restaurantTypes.add(getString(R.string.all_types));
 
         createTabs();
         createToolbar();
 
         if (getIntent() != null && getIntent().getExtras() != null) {
-            System.out.println("Entering");
             foodLocals = getIntent().getExtras().getParcelableArrayList("LOCATIONS");
-            System.out.println("size" + foodLocals.size());
 
             for (FoodLocal l : foodLocals) {
                 boolean trobat = false;
@@ -82,8 +80,8 @@ public class ResultsActivity extends AppCompatActivity {
         allFragment = new ResultsListViewFragment();
         onlyOpenFragment = new ResultsListViewFragment();
 
-        entries.add(new TabAdapter.TabEntry(allFragment, "All"));
-        entries.add(new TabAdapter.TabEntry(onlyOpenFragment, "ONLY OPEN"));
+        entries.add(new TabAdapter.TabEntry(allFragment, getString(R.string.all_types)));
+        entries.add(new TabAdapter.TabEntry(onlyOpenFragment, getString(R.string.only_open)));
 
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager(), entries);
         viewPager.setAdapter(adapter);
@@ -122,7 +120,6 @@ public class ResultsActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_favorites_button:
                 Intent intent = new Intent(this, FavoritesActivity.class);
-                System.out.println("PRESSING OK");
                 startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
