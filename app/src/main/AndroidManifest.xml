@@ -19,7 +19,11 @@
         <activity
             android:name=".activities.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".activities.DescriptionActivity"
@@ -30,14 +34,14 @@
             android:name=".activities.SearchActivity"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 
         </activity>
         <activity android:name=".activities.ResultsActivity">
+
+        </activity>
+
+        <activity android:name=".activities.RegisterActivity">
 
         </activity>
     </application>

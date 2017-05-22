@@ -16,6 +16,7 @@
     <string name="favorite">Favorite</string>
     <string name="no_login">Error: No login entered</string>
     <string name="no_password">Error: No password entered</string>
+    <string name="unable_login">Error: Wrong login/password</string>
 
     <string name="please_wait">Please wait</string>
 
