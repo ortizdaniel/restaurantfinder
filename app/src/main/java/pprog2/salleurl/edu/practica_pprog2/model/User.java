@@ -15,12 +15,15 @@ public class User {
     private char sexo;
     private String description;
 
+    public User(){}
+
     public User(String nombre,String  apellidos,String image_path,String description,String email,char sexo){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.description = description;
         this.email = email;
         this.sexo = sexo;
+        //TODO add photo
         //Environment.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
     }
 }
