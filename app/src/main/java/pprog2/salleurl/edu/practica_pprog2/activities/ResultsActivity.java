@@ -37,7 +37,7 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         restaurantTypes = new ArrayList<>();
-        restaurantTypes.add("ALL"); //
+        restaurantTypes.add("ALL");
 
         createTabs();
         createToolbar();
