@@ -40,14 +40,6 @@
         <activity android:name=".activities.ResultsActivity">
 
         </activity>
-
-        <activity android:name=".activities.RegisterActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

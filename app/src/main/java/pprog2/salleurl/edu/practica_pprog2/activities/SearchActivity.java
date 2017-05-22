@@ -96,7 +96,6 @@ public class SearchActivity extends AppCompatActivity {
                 }
                 return false;
             }
-
         });
     }
 
@@ -110,7 +109,7 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar_menu_description, menu);
+        inflater.inflate(R.menu.action_bar_menu_favorite_profile, menu);
         return true;
     }
 

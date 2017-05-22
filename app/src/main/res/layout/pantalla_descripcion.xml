@@ -10,7 +10,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="120dp"
@@ -74,8 +76,7 @@
             android:layout_below="@id/rating_layout"
             android:id="@+id/placeDescription"
             android:textSize="18sp"
-            android:textColor="@color/dark_gray"
-            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"/>
+            android:textColor="@color/dark_gray"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

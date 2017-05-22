@@ -15,14 +15,14 @@ import java.util.Calendar;
 import java.util.Date;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
-import pprog2.salleurl.edu.practica_pprog2.adapters.LocationResultsAdapter;
+import pprog2.salleurl.edu.practica_pprog2.adapters.FoodLocalsAdapter;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 
 
 public class ResultsListViewFragment extends Fragment {
 
     private ListView listView;
-    private LocationResultsAdapter adapter;
+    private FoodLocalsAdapter adapter;
     private ArrayList<FoodLocal> foodLocals;
     private ArrayList<FoodLocal> allFoodLocals;
 
@@ -41,10 +41,10 @@ public class ResultsListViewFragment extends Fragment {
         listView = (ListView) view.findViewById(R.id.fragment_results_listview);
 
         // Creamos el adapter.
-        adapter = new LocationResultsAdapter(getActivity(), foodLocals);
-
+        adapter = new FoodLocalsAdapter(getActivity(), foodLocals);
         // Vinculamos el adapter a la ListView.
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(adapter);
         // Vinculamos el adapter (que implementa un OnItemClickListener) como Listener de cada
         // uno de los items de la ListView.
 
@@ -90,7 +90,6 @@ public class ResultsListViewFragment extends Fragment {
     public static boolean isTimeBetweenTwoTime(String initialTime, String finalTime, String currentTime) throws ParseException {
         String reg = "^([0-1][0-9]|2[0-3]):([0-5][0-9])$";
         if (initialTime.matches(reg) && finalTime.matches(reg) && currentTime.matches(reg)) {
-            System.out.println("matches");
             boolean valid = false;
             //Start Time
             java.util.Date inTime = new SimpleDateFormat("HH:mm").parse(initialTime);

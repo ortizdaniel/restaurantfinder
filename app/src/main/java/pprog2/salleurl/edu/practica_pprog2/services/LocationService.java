@@ -87,7 +87,6 @@ public class LocationService {
     private void updateCurrentLocation(Location location) {
         if (isBetterLocation(location, this.location)) {
             this.location = location;
-            Log.d(LocationService.class.getName(), "LOCATION UPDATED: " + location);
         }
     }
 

@@ -7,7 +7,7 @@ CREATE TABLE RecentSearch (
     radio INT
 );
 
-CREATE TABLE User{
+CREATE TABLE User(
     _id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT,
     apellidos TEXT,
@@ -15,4 +15,17 @@ CREATE TABLE User{
     email TEXT,
     sexo CHAR,
     description TEXT
-}
+);
+
+CREATE TABLE FavoritePlace(
+    user_id INTEGER,
+    name TEXT,
+    type TEXT,
+    latitude DOUBLE,
+    longitude DOUBLE,
+    address TEXT,
+    openingHour TEXT,
+    closingHour TEXT,
+    rating DOUBLE,
+    description TEXT
+);

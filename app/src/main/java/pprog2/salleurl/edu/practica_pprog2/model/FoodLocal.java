@@ -6,6 +6,8 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
+import pprog2.salleurl.edu.practica_pprog2.R;
+
 /**
  * Created by Mundirisa on 16/05/2017.
  */
@@ -140,4 +142,69 @@ public class FoodLocal implements Parcelable {
             return new FoodLocal[size];
         }
     };
+
+    public static int getImageResourceId(String type) {
+        int imageId;
+        switch (type) {
+            case "Oriental":
+                imageId =  R.mipmap.ic_oriental;
+                break;
+
+            case "Take Away":
+                imageId =  R.mipmap.ic_launcher;
+                break;
+
+            case "Italiano":
+                imageId = R.mipmap.ic_italiana;
+                break;
+
+            case "Hamburgueseria":
+                imageId = R.mipmap.ic_hamburger;
+                break;
+
+            case "Restaurante":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Nepali":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Frankfurt":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Cafe":
+                imageId = R.mipmap.ic_cafe;
+                break;
+
+            case "Braseria":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Tapas":
+                imageId = R.mipmap.ic_launcher;
+                break;
+            case "Mejicano":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Asador":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Marisqueria":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            case "Bar":
+                imageId = R.mipmap.ic_launcher;
+                break;
+
+            default:
+                imageId = R.mipmap.ic_launcher;
+                break;
+        }
+        return imageId;
+    }
 }
