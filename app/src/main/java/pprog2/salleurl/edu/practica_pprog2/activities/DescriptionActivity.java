@@ -57,7 +57,7 @@ public class DescriptionActivity extends AppCompatActivity {
             localImageView.setImageResource(FoodLocal.getImageResourceId(foodLocal.getType()));
             localNameTextView.setText(foodLocal.getName());
             localDescriptionTextView.setText(foodLocal.getDescription());
-            localRatingBar.setNumStars((int)Math.round(foodLocal.getRating()));
+            localRatingBar.setRating((float)foodLocal.getRating());
         }
     }
 
@@ -69,6 +69,7 @@ public class DescriptionActivity extends AppCompatActivity {
             favButton.setImageResource(R.drawable.favorite_empty);
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

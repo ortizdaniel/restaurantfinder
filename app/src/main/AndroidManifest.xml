@@ -21,9 +21,14 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity
             android:name=".activities.DescriptionActivity"
-            android:configChanges="orientation|screenSize"></activity>
+            android:theme="@style/AppBarTheme"
+            android:configChanges="orientation|screenSize"/>
+
+        </activity>
+		
         <activity
             android:name=".activities.SearchActivity"
+            android:theme="@style/AppBarTheme"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>

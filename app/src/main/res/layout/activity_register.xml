@@ -38,7 +38,8 @@
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_weight="1"
-                    android:text="@string/take_picture" />
+                    android:text="@string/take_picture"
+                    android:onClick="onTakePictureClick"/>
 
             </RelativeLayout>
 
@@ -116,13 +117,15 @@
                     android:id="@+id/radioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    >
 
                     <RadioButton
                         android:id="@+id/rdbMale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:checked="true"
                         android:text="@string/male" />
 
                     <RadioButton
@@ -156,7 +159,8 @@
                     android:id="@+id/btnRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/register" />
+                    android:text="@string/register"
+                    android:onClick="onReallyRegisterClick"/>
 
             </LinearLayout>
 

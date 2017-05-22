@@ -56,7 +56,7 @@ public class FoodLocalsAdapter extends ArrayAdapter<FoodLocal> implements Adapte
         locationNameTextView.setText(loc.getName());
 
         RatingBar ratingBar = (RatingBar) itemView.findViewById(R.id.listview_result_starsBar);
-        ratingBar.setNumStars((int)Math.round(loc.getRating()));
+        ratingBar.setRating((float)loc.getRating());
 
         TextView locationAddressTextView = (TextView) itemView.findViewById(R.id.listview_result_locationAddress);
         locationAddressTextView.setText(loc.getAddress());

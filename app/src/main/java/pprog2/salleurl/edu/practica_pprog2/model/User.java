@@ -7,6 +7,10 @@ import android.graphics.Bitmap;
  */
 
 public class User {
+
+    public static char MALE = 'M';
+    public static char FEMALE = 'F';
+
     private String nombre;
     private String[] apellidos;
     private Bitmap profileImage;

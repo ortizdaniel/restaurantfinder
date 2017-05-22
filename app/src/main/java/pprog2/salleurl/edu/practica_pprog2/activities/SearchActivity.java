@@ -215,9 +215,6 @@ public class SearchActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(List<FoodLocal> aList) {
             super.onPostExecute(aList);
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
-            }
             if (aList.isEmpty()) {
                 Toast.makeText(context, getString(R.string.search_no_locations_found), Toast.LENGTH_SHORT)
                         .show();
@@ -237,6 +234,9 @@ public class SearchActivity extends AppCompatActivity {
                 bundle.putParcelableArrayList("LOCATIONS", locationsList);
                 intent.putExtras(bundle);
                 startActivity(intent);
+            }
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
             }
         }
     }
