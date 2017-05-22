@@ -6,13 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
+import pprog2.salleurl.edu.practica_pprog2.model.User;
+import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
 
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText username;
     private TextInputEditText password;
+    private UsersRepo usersRepo;
+    private static User actualUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,5 +56,9 @@ public class MainActivity extends AppCompatActivity {
         /* Llamamos a la actividad de Registro */
         //Intent intent = new Intent(this, /*Register Activity.class*/);
         //startActivity(intent);
+    }
+
+    public static User getActualUser() {
+        return actualUser;
     }
 }

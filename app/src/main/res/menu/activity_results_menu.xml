@@ -12,12 +12,12 @@
     <item
         android:id="@+id/menu_favorites_button"
         android:title="@string/favorite_button_title"
-        android:icon="@mipmap/ic_favorite_button"
+        android:icon="@drawable/favorite"
         app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_profile_button"
         android:title="@string/profile_button_title"
-        android:icon="@mipmap/ic_profile_button"
+        android:icon="@drawable/profile"
         app:showAsAction="ifRoom"/>
 </menu>

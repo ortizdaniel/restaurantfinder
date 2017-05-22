@@ -23,8 +23,6 @@
             android:name=".activities.DescriptionActivity"
             android:theme="@style/AppBarTheme"
             android:configChanges="orientation|screenSize"/>
-
-        </activity>
 		
         <activity
             android:name=".activities.SearchActivity"

@@ -28,6 +28,7 @@ import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.adapters.TabAdapter;
 import pprog2.salleurl.edu.practica_pprog2.fragments.ResultsListViewFragment;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
+import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.FavoriteFoodLocalsRepo;
 import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.FavoriteFoodLocalsDB;
 
@@ -50,7 +51,12 @@ public class FavoritesActivity extends AppCompatActivity {
         favoritesRepo = new FavoriteFoodLocalsDB(this);
         createTabs();
         createToolbar();
-
+        User actualUser = MainActivity.getActualUser();
+        if (actualUser != null) {
+            new AsyncRequest(this).execute(MainActivity.getActualUser().getId().toString());
+        } else {
+            finish();
+        }
     }
     private void createToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -148,5 +154,4 @@ public class FavoritesActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }

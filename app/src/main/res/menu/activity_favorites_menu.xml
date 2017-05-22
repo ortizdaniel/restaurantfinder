@@ -10,6 +10,6 @@
     <item
         android:id="@+id/activity_favorites_menu_profile_button"
         android:title="@string/profile_button_title"
-        android:icon="@mipmap/ic_profile_button"
+        android:icon="@drawable/profile"
         app:showAsAction="ifRoom"/>
 </menu>
