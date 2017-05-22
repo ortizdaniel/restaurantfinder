@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             if(user == null) {
                 user = new User();
             }
+            //User user = new User();
             //hasta aqui
             if(user == null){
                 /* Login Unable */
