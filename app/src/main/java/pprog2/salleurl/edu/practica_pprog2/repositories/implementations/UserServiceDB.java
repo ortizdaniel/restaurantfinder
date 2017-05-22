@@ -1,5 +1,6 @@
 package pprog2.salleurl.edu.practica_pprog2.repositories.implementations;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
@@ -27,8 +28,20 @@ public class UserServiceDB implements UsersRepo {
     public UserServiceDB(Context context){this.context = context;}
 
     @Override
-    public void addUser(String nombre,String  apellidos,String image_path,String description,String email,char sexo) {
+    public void addUser(User u) {
+        // Recuperamos una instancia del DatabaseHelper para poder acceder a la base de datos.
+        DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
+        // Creamos los valores a añadir a la base de datos mediante un conjunto <Clave, Valor>.
+        ContentValues values = new ContentValues();
+        values.put(NAME_USER, u.getNombre());
+        values.put(SURNAME_USER, u.getApellidos());
+        values.put(IMAGE_USER, u.getProfileImageName());
+        values.put(EMAIL_USER,u.getEmail());
+        values.put(DESCRIPTION_USER,u.getDescription());
+        values.put(SEXO_USER,String.valueOf(u.getSexo()));
+        // Obtenemos la base de datos en modo escritura e inserimos los valores en la Tabla
+        helper.getWritableDatabase().insert(TABLE_NAME_USER, null, values);
     }
 
     @Override
@@ -71,7 +84,7 @@ public class UserServiceDB implements UsersRepo {
     }
 
     @Override
-    public void updateUser() {
+    public void updateUser(User u) {
 
     }
 }
