@@ -44,6 +44,7 @@ public class UserServiceDB implements UsersRepo {
         helper.getWritableDatabase().insert(TABLE_NAME_USER, null, values);
     }
 
+
     @Override
     public User getUser(String username, String password) {
         User u = null;
@@ -87,4 +88,5 @@ public class UserServiceDB implements UsersRepo {
     public void updateUser(User u) {
 
     }
+
 }
