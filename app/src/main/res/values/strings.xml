@@ -40,6 +40,9 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
+
+
     <string name="take_picture">Take picture</string>
     <string name="name">Name</string>
     <string name="surname">Surname</string>
@@ -54,5 +57,6 @@
     <string name="error_repeat_email">The email you\'re trying to register with already exists</string>
     <string name="password_mismatch">The passwords you\'ve entered do not match</string>
     <string name="terms_not_accepted">You must accept the terms and conditions for registering</string>
+
 
 </resources>

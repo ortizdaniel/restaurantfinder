@@ -1,22 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
     <item
-        android:id="@+id/activity_results_menu_spinner"
+        android:id="@+id/activity_favorites_menu_spinner"
         android:background="#ff00"
         android:title="ActionBar Spinner"
         app:actionViewClass="android.widget.Spinner"
         app:showAsAction="always" />
-
     <item
-        android:id="@+id/menu_favorites_button"
-        android:title="@string/favorite_button_title"
-        android:icon="@drawable/favorite"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/menu_profile_button"
+        android:id="@+id/activity_favorites_menu_profile_button"
         android:title="@string/profile_button_title"
         android:icon="@drawable/profile"
         app:showAsAction="ifRoom"/>

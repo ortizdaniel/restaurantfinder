@@ -13,12 +13,12 @@ import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
 import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText username;
     private TextInputEditText password;
     private UsersRepo usersRepo;
+    private static User actualUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +60,11 @@ public class MainActivity extends AppCompatActivity {
     public void onRegisterButtonClick(View view){
         //TODO esperando a k dani haga su clase
         /* Llamamos a la actividad de Registro */
-        Intent intent = new Intent(this, RegisterActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, /*Register Activity.class*/);
+        //startActivity(intent);
+    }
+
+    public static User getActualUser() {
+        return actualUser;
     }
 }
