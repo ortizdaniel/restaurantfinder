@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pprog2.salleurl.edu.practica_pprog2">
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <!-- API 21+ - Android 5.0+ -->
-    <uses-feature android:name="android.hardware.location.network"/>
-    <uses-feature android:name="android.hardware.location.gps"/>
+    <uses-feature android:name="android.hardware.location.network" />
+    <uses-feature android:name="android.hardware.location.gps" />
 
     <application
         android:allowBackup="true"
@@ -18,32 +18,25 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity
+            android:name=".activities.DescriptionActivity"
+            android:configChanges="orientation|screenSize"></activity>
+        <activity
+            android:name=".activities.SearchActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.ResultsActivity"></activity>
         <activity
-            android:name=".activities.DescriptionActivity"
-            android:configChanges="orientation|screenSize">
-
-        </activity>
-        <activity
-            android:name=".activities.SearchActivity"
-            android:configChanges="orientation|screenSize"
-            android:windowSoftInputMode="adjustPan">
-
-
-        </activity>
-        <activity android:name=".activities.ResultsActivity">
-
-        </activity>
-
-        <activity android:name=".activities.RegisterActivity">
-
-        </activity>
+            android:name=".activities.FavoritesActivity"
+            android:label="@string/title_activity_favorites"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

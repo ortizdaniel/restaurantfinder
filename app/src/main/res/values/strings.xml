@@ -16,7 +16,6 @@
     <string name="favorite">Favorite</string>
     <string name="no_login">Error: No login entered</string>
     <string name="no_password">Error: No password entered</string>
-    <string name="unable_login">Error: Wrong login/password</string>
 
     <string name="please_wait">Please wait</string>
 
@@ -40,14 +39,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="take_picture">Take picture</string>
-    <string name="name">Name</string>
-    <string name="surname">Surname</string>
-    <string name="email">Email</string>
-    <string name="confirm_password">Confirm password</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="description">Description</string>
-    <string name="accept_terms">Accept terms and conditions</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
 
 </resources>

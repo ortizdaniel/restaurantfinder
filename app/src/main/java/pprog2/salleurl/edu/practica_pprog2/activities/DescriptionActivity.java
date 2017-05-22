@@ -80,7 +80,8 @@ public class DescriptionActivity extends AppCompatActivity {
         switch (menuItem.getItemId()){
             /* Comprovem quin boto de la action bar s'ha permut */
             case R.id.menu_fav_action_button:
-                /* fav intent */
+                Intent intent = new Intent(this, FavoritesActivity.class);
+                startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
                 /* profile Intent */

@@ -12,9 +12,8 @@ CREATE TABLE User(
     nombre TEXT,
     apellidos TEXT,
     profileImage TEXT,
-    email TEXT UNIQUE,
+    email TEXT,
     sexo CHAR,
-    password TEXT,
     description TEXT
 );
 

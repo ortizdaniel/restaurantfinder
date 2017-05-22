@@ -117,9 +117,8 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_fav_action_button:
-                Intent favoritesIntent = new Intent();
-                //TODO: añadir clase de favoritos
-                startActivity(favoritesIntent);
+                Intent intent = new Intent(this, FavoritesActivity.class);
+                startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
                 Intent profileIntent = new Intent();
