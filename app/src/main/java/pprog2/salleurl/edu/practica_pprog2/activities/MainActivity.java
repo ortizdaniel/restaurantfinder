@@ -33,8 +33,12 @@ public class MainActivity extends AppCompatActivity {
         }else if(password.getText().toString().equals("")){
             password.setError(getString(R.string.no_password));
         }else{
-            //User user = usersRepo.getUser(username.getText().toString(),password.getText().toString());
-            User user = new User();
+            User user = usersRepo.getUser(username.getText().toString(),password.getText().toString());
+            // v Esto de debajo es para el que sergi pueda probar sin loggear v
+            if(user == null) {
+                user = new User();
+            }
+            //hasta aqui
             if(user == null){
                 /* Login Unable */
                 Toast.makeText(this, getString(R.string.unable_login), Toast.LENGTH_SHORT)
