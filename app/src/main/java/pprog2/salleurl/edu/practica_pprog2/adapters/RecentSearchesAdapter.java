@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.util.List;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
+import pprog2.salleurl.edu.practica_pprog2.activities.SearchActivity;
+import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 import pprog2.salleurl.edu.practica_pprog2.model.RecentSearch;
 
 
@@ -28,10 +30,8 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearch> implements
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-
         View itemView;
         LayoutInflater itemInflater = LayoutInflater.from(getContext());
-
         if (convertView == null) {
             itemView = itemInflater.inflate(R.layout.search_recent_searches_list_view_item, parent, false);
         }
@@ -41,7 +41,6 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearch> implements
         String textToShow;
         RecentSearch rs = recentSearches.get(position);
         if (rs.isText()) {
-            System.out.println("ñpñ");
             textToShow = rs.getSearchText();
         } else {
             textToShow = "Lat = " + rs.getLatitude() + " Lon = " + rs.getLongitude() + " Radius = " + rs.getRadius() + " km";
@@ -59,6 +58,15 @@ public class RecentSearchesAdapter extends ArrayAdapter<RecentSearch> implements
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        SearchActivity activity = (SearchActivity) getContext();
+        RecentSearch rs = recentSearches.get(position);
+        String searchParameters;
+        if (rs.isText()) {
+            searchParameters = "&s=" + rs.getSearchText();
+        } else {
+            searchParameters = "&lat=" + rs.getLatitude() + "&lon=" + rs.getLongitude()
+                    + "&dist=" + rs.getRadius();
+        }
+        activity.makeSearchAsyncRequest(searchParameters);
     }
 }
