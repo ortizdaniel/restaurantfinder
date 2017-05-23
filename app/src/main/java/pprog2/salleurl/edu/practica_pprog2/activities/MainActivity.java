@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 Log.d("DANI", user.getEmail());
                 Log.d("DANI", user.getNombre());
+                actualUser = user;
                 /* Llamamos a la Activity de Busqueda */
                 Intent intent = new Intent(this,SearchActivity.class);
                 startActivity(intent);
