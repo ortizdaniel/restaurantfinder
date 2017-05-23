@@ -44,6 +44,7 @@ public class UserServiceDB implements UsersRepo {
         helper.getWritableDatabase().insert(TABLE_NAME_USER, null, values);
     }
 
+
     @Override
     public User getUser(String username, String password) {
         User u = null;
@@ -70,7 +71,7 @@ public class UserServiceDB implements UsersRepo {
                 do {
                     String nombre = cursor.getString(cursor.getColumnIndex(NAME_USER));
                     String apellidos = cursor.getString(cursor.getColumnIndex(SURNAME_USER));
-                    String image_path = cursor.getString(cursor.getColumnIndex(IMAGE_USER));
+                    byte[] image_path = cursor.getBlob(cursor.getColumnIndex(IMAGE_USER));
                     String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_USER));
                     String email = cursor.getString(cursor.getColumnIndex(EMAIL_USER));
                     char sexo = cursor.getString(cursor.getColumnIndex(SEXO_USER)).charAt(0);
@@ -87,4 +88,5 @@ public class UserServiceDB implements UsersRepo {
     public void updateUser(User u) {
 
     }
+
 }

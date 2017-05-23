@@ -1,6 +1,7 @@
 package pprog2.salleurl.edu.practica_pprog2.activities;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.graphics.Bitmap;
@@ -14,6 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Toast;
+
+import java.io.ByteArrayOutputStream;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
@@ -41,8 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText txtDescription;
     private CheckBox accept;
 
-    private boolean pictureTaken;
-    private Bitmap imageTaken;
+    private byte[] imageTaken;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
         isMale = (RadioButton) findViewById(R.id.rdbMale);
         txtDescription = (EditText) findViewById(R.id.txtDescription);
         accept = (CheckBox) findViewById(R.id.chbAcceptTerms);
-        pictureTaken = false;
+        imageTaken = null;
     }
 
     public void onTakePictureClick(View view) {
@@ -66,7 +68,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void onReallyRegisterClick(View view) {
-        if (accept.isChecked() && pictureTaken) {
+        if (accept.isChecked()) {
             String name = txtName.getText().toString();
             String surname = txtSurname.getText().toString();
             //IMAGE TAKEN AQUI
@@ -77,9 +79,8 @@ public class RegisterActivity extends AppCompatActivity {
             String description = txtDescription.getText().toString();
 
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() ||
-                    description.isEmpty()) {
-                //TODO CORREGIR TOAST
-                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+                    description.isEmpty() || imageTaken == null) {
+                Toast.makeText(this, str(R.string.fields_empty), Toast.LENGTH_LONG).show();
                 return;
             }
 
@@ -88,24 +89,25 @@ public class RegisterActivity extends AppCompatActivity {
                 SQLiteStatement stmt = db.compileStatement(QUERY);
                 stmt.bindString(1, name);
                 stmt.bindString(2, surname);
-                stmt.bindNull(3); //TODO CORREGIR IMAGEN ESTA A NULO AHORA
+                stmt.bindBlob(3, imageTaken); //TODO CORREGIR IMAGEN ESTA A NULO AHORA
                 stmt.bindString(4, email);
                 stmt.bindString(5, String.valueOf(sex));
                 stmt.bindString(6, password);
                 stmt.bindString(7, description);
-                if (stmt.executeInsert() != -1) {
-                    Toast.makeText(this, "REGISTRADO", Toast.LENGTH_SHORT).show(); //TODO CORREGIR
-                } else {
-                    //TODO CORREGIR TOAST
-                    Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+                try {
+                    if (stmt.executeInsert() != -1) {
+                        Toast.makeText(this, str(R.string.registered), Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, str(R.string.error_repeat_email), Toast.LENGTH_LONG).show();
+                    }
+                } catch (SQLiteConstraintException e) {
+                    Toast.makeText(this, str(R.string.error_repeat_email), Toast.LENGTH_LONG).show();
                 }
             } else {
-                //TODO CORREGIR TOAST
-                Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, str(R.string.password_mismatch), Toast.LENGTH_LONG).show();
             }
         } else {
-            //TODO CORREGIR TOAST
-            Toast.makeText(this, "ERROR", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, str(R.string.terms_not_accepted), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -116,13 +118,18 @@ public class RegisterActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     Bundle bundle = data.getExtras();
                     Bitmap image = (Bitmap) bundle.get("data");
-                    if (profileImage != null) {
+                    if (image != null && profileImage != null) {
                         profileImage.setImageBitmap(image);
-                        pictureTaken = true;
-                        imageTaken = image;
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                        imageTaken = stream.toByteArray();
                     }
                 }
                 break;
         }
+    }
+
+    private String str(int id) {
+        return getString(id);
     }
 }

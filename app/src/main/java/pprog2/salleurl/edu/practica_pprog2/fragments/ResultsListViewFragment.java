@@ -66,7 +66,7 @@ public class ResultsListViewFragment extends Fragment {
             if (onlyOpen) {
                 try {
                     if (isTimeBetweenTwoTime(l.getOpeningHour(), l.getClosingHour(), dateFormat.format(date))) {
-                        if (type.equals("ALL")) {
+                        if (type.equals(getString(R.string.all_types))) {
                             foodLocals.add(l);
                         } else if (type.equals(l.getType())) {
                             foodLocals.add(l);

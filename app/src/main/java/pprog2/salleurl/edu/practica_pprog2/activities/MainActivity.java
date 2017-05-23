@@ -1,11 +1,11 @@
 package pprog2.salleurl.edu.practica_pprog2.activities;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
     private TextInputEditText username;
     private TextInputEditText password;
     private UsersRepo usersRepo;
+    private static User actualUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,11 @@ public class MainActivity extends AppCompatActivity {
             password.setError(getString(R.string.no_password));
         }else{
             User user = usersRepo.getUser(username.getText().toString(),password.getText().toString());
+
             // v Esto de debajo es para el que sergi pueda probar sin loggear v
-            if(user == null) {
+            /*if(user == null) {
                 user = new User();
-            }
+            }*/
             //User user = new User();
             //hasta aqui
             if(user == null){
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.unable_login), Toast.LENGTH_SHORT)
                         .show();
             }else{
+                Log.d("DANI", user.getEmail());
+                Log.d("DANI", user.getNombre());
                 /* Llamamos a la Activity de Busqueda */
                 Intent intent = new Intent(this,SearchActivity.class);
                 startActivity(intent);
@@ -59,5 +63,9 @@ public class MainActivity extends AppCompatActivity {
         /* Llamamos a la actividad de Registro */
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
+    }
+
+    public static User getActualUser() {
+        return actualUser;
     }
 }

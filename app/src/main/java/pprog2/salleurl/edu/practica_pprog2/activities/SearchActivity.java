@@ -91,6 +91,7 @@ public class SearchActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (v.getId() == searchEditText.getId()) {
                     onClickSearchByTextButton(v);
+                    onClickSearchClearButton(v);
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
@@ -117,9 +118,8 @@ public class SearchActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_fav_action_button:
-                Intent favoritesIntent = new Intent();
-                //TODO: añadir clase de favoritos
-                startActivity(favoritesIntent);
+                Intent intent = new Intent(this, FavoritesActivity.class);
+                startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
                 Intent profileIntent = new Intent();
@@ -158,7 +158,7 @@ public class SearchActivity extends AppCompatActivity {
 
     public void onClickSearchGeolocationButton(View v) {
         Location location = LocationService.getInstance(this).getLocation();
-        int radius = radiusSeekBar.getProgress() + 10000000;
+        int radius = radiusSeekBar.getProgress() + 1;
         String searchParameters = "&lat=" + location.getLatitude() + "&lon=" + location.getLongitude()
                                     + "&dist=" + radius;
         System.out.println(searchParameters);
@@ -177,13 +177,15 @@ public class SearchActivity extends AppCompatActivity {
 
     public void onClickSearchByTextButton(View v) {
         if (!searchEditText.getText().toString().isEmpty()) {
-            System.out.println("PRESSING");
             String searchParameters = "&s=" + searchEditText.getText().toString();
             lastRecentSearch = new RecentSearch();
             lastRecentSearch.setIsText(true);
             lastRecentSearch.setSearchText(searchEditText.getText().toString());
             saveLastSearch = true;
             new AsyncRequest(this).execute(searchParameters);
+        } else {
+            Toast.makeText(this, getString(R.string.search_recent_is_empty_error), Toast.LENGTH_SHORT)
+                    .show();
         }
     }
 
@@ -230,8 +232,6 @@ public class SearchActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(context, ResultsActivity.class);
                 Bundle bundle = new Bundle();
-                System.out.println("size" + aList.size());
-                System.out.println("size" + locationsList.size());
                 bundle.putParcelableArrayList("LOCATIONS", locationsList);
                 intent.putExtras(bundle);
                 startActivity(intent);
