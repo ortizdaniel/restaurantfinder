@@ -104,7 +104,10 @@ public class RegisterActivity extends AppCompatActivity {
                 stmt.bindString(7, description);
                 try {
                     if (stmt.executeInsert() != -1) {
-                        Toast.makeText(this, str(R.string.registered), Toast.LENGTH_LONG).show();
+                        //Toast.makeText(this, str(R.string.registered), Toast.LENGTH_LONG).show();
+                        MainActivity.setActualUser(new User(name,surname,imageTaken,description,email,sex,this));
+                        Intent intent = new Intent(this, SearchActivity.class);
+                        startActivity(intent);
                     } else {
                         Toast.makeText(this, str(R.string.error_repeat_email), Toast.LENGTH_LONG).show();
                     }

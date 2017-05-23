@@ -61,6 +61,9 @@ public class DescriptionActivity extends AppCompatActivity {
             localNameTextView.setText(foodLocal.getName());
             localDescriptionTextView.setText(foodLocal.getDescription());
             localRatingBar.setRating((float)foodLocal.getRating());
+            if(favoriteFoodLocalsRepo.isFavorite(MainActivity.getActualUser().getEmail(),foodLocal)){
+                favButton.setImageResource(R.drawable.favorite);
+            }
         }
     }
 

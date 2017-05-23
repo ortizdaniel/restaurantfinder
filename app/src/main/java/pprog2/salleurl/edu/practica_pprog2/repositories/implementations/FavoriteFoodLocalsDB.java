@@ -3,6 +3,8 @@ package pprog2.salleurl.edu.practica_pprog2.repositories.implementations;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 
 import java.util.ArrayList;
@@ -97,12 +99,29 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
 
         // Preparamos la cláusula del where. Su formato es: "<nombre columna> = ?" donde ? se
         // sustituirá por el valor añadido en los argumentos.
-        String whereClause = COLUMN_USER_EMAIL + "=? and " + COLUMN_ADDRESS + "=?";
+        String whereClause = COLUMN_USER_EMAIL + "=? and " + COLUMN_ADDRESS + "=? and " + COLUMN_NAME +"=?";
         // Preparamos los argumentos a sustituir por los '?' de la cláusula.
-        String[] whereArgs = {userEmail, foodLocal.getAddress()};
+        String[] whereArgs = {userEmail, foodLocal.getAddress(),foodLocal.getName()};
 
         helper.getWritableDatabase().delete(TABLE_NAME, whereClause, whereArgs);
         // El delete anterior equivale a la query SQL:
         // delete from TABLE_NAME where COLUMN_NAME=p.getName() and COLUMN_SURNAME=p.getSurname();
+    }
+
+    @Override
+    public boolean isFavorite(String userEmail, FoodLocal foodLocal) {
+        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+
+        // Preparamos la cláusula del where. Su formato es: "<nombre columna> = ?" donde ? se
+        // sustituirá por el valor añadido en los argumentos.
+        String whereClause = COLUMN_USER_EMAIL + "=? and " + COLUMN_ADDRESS + "=? and " + COLUMN_NAME +"=?";
+        // Preparamos los argumentos a sustituir por los '?' de la cláusula.
+        String[] whereArgs = {userEmail, foodLocal.getAddress(),foodLocal.getName()};
+
+        SQLiteDatabase db = helper.getReadableDatabase();
+
+        long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);
+
+        return count > 0;
     }
 }
