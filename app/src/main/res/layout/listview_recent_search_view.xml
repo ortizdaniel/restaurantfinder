@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="pprog2.salleurl.edu.practica_pprog2.fragments.ResultsListViewFragment">
+    tools:ctx="pprog2.salleurl.edu.practica_pprog2.fragments.ResultsListViewFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

@@ -40,7 +40,7 @@
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
                     android:layout_weight="1"
-                    android:onClick="onTakePictureClick"
+                    android:onClick="onEditPictureClick"
                     android:text="@string/take_picture" />
 
             </RelativeLayout>
@@ -111,9 +111,9 @@
                     android:id="@+id/btnSave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="onEditPictureClick"
+                    android:onClick="onSaveButtonClick"
                     android:text="@string/save"
-                    android:visibility="gone" />
+                    android:visibility="visible" />
 
             </LinearLayout>
 

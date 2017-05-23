@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name"></string>
+    <string name="app_name">Practica</string>
 
     <!-- Strings related to login -->
     <string name="username">Username</string>
@@ -65,6 +65,8 @@
     <string name="terms_not_accepted">You must accept the terms and conditions for registering</string>
     <string name="save">Save</string>
     <string name="edit">Edit profile</string>
+    <string name="information_updated_success">Updated successfuly</string>
+    <string name="information_update_error">Could not update the information correctly</string>
 
     <string name="unable_comment">You must add a comment to send it</string>
 

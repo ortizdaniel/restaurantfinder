@@ -6,8 +6,8 @@
     <item
         android:id="@+id/btnEdit"
         android:icon="@android:drawable/ic_menu_edit"
-        android:onClick=""
         android:title="@string/edit"
         android:visible="true"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        android:onClick="editButtonClick"/>
 </menu>
