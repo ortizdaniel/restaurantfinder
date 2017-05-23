@@ -186,7 +186,7 @@ public class FoodLocal implements Parcelable {
                 imageId = R.mipmap.ic_tapas;
                 break;
             case "Mejicano":
-                imageId = R.mipmap.ic_mejicano;
+                imageId = R.mipmap.ic_mejicana;
                 break;
 
             case "Asador":
