@@ -30,3 +30,9 @@ CREATE TABLE FavoritePlace(
     rating DOUBLE,
     description TEXT
 );
+
+CREATE TABLE CommmentFavorite(
+    local_name TEXT,
+    comment TEXT,
+    user_email TEXT
+);

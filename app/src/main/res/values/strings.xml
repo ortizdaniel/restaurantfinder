@@ -66,5 +66,7 @@
     <string name="save">Save</string>
     <string name="edit">Edit profile</string>
 
+    <string name="unable_comment">You must add a comment to send it</string>
+
 
 </resources>

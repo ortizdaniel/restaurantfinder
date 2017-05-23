@@ -2,6 +2,7 @@ package pprog2.salleurl.edu.practica_pprog2.repositories;
 
 import java.util.List;
 
+import pprog2.salleurl.edu.practica_pprog2.model.Comment;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 
 /**
@@ -13,4 +14,6 @@ public interface FavoriteFoodLocalsRepo {
     void insertFavoriteFoodLocal(String userEmail, FoodLocal foodLocal);
     void deleteFavoriteFoodLocal(String userEmail,FoodLocal foodLocal);
     boolean isFavorite(String userEmail, FoodLocal foodLocal);
+    List<Comment> getComments(String foodLocal);
+    void addComment(String userEmail, String comment, String localName);
 }

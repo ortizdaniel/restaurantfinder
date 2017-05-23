@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -14,10 +15,16 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
+import pprog2.salleurl.edu.practica_pprog2.adapters.CommentsAdapter;
+import pprog2.salleurl.edu.practica_pprog2.model.Comment;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 import pprog2.salleurl.edu.practica_pprog2.repositories.FavoriteFoodLocalsRepo;
 import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.FavoriteFoodLocalsDB;
@@ -35,6 +42,9 @@ public class DescriptionActivity extends AppCompatActivity {
     private TextView localDescriptionTextView;
     private FoodLocal foodLocal;
     private FavoriteFoodLocalsRepo favoriteFoodLocalsRepo;
+    private ListView lvComments;
+    private TextInputEditText comment;
+    private CommentsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +52,8 @@ public class DescriptionActivity extends AppCompatActivity {
         setContentView(R.layout.pantalla_descripcion);
         favorited = false;
         favButton = (FloatingActionButton) findViewById(R.id.favButton);
+        comment = (TextInputEditText) findViewById(R.id.add_comment);
+        lvComments = (ListView) findViewById(R.id.listview_comments);
         foodLocal = null;
         favoriteFoodLocalsRepo = new FavoriteFoodLocalsDB(getApplicationContext());
         Intent intent = getIntent();
@@ -64,6 +76,23 @@ public class DescriptionActivity extends AppCompatActivity {
             if(favoriteFoodLocalsRepo.isFavorite(MainActivity.getActualUser().getEmail(),foodLocal)){
                 favButton.setImageResource(R.drawable.favorite);
             }
+        }
+        List<Comment> comments = favoriteFoodLocalsRepo.getComments(foodLocal.getName());
+        // Creem l'adapter.
+        adapter = new CommentsAdapter(this,comments);
+
+        // El vinculem a la ListView.
+        lvComments.setAdapter(adapter);
+    }
+
+    public void onSendButtonClick(View view){
+        if(comment.getText().toString().equals("")){
+            comment.setError(getString(R.string.unable_comment));
+        }else{
+            favoriteFoodLocalsRepo.addComment(MainActivity.getActualUser().getEmail(),
+                    comment.getText().toString(),foodLocal.getName());
+            adapter.setCommentsList(favoriteFoodLocalsRepo.getComments(foodLocal.getName()));
+            adapter.notifyDataSetChanged();
         }
     }
 

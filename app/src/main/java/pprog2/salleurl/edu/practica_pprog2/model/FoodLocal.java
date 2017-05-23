@@ -202,7 +202,7 @@ public class FoodLocal implements Parcelable {
                 break;
 
             default:
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_launcher_round;
                 break;
         }
         return imageId;

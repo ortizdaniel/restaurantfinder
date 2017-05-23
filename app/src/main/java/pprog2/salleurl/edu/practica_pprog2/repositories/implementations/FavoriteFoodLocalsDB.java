@@ -10,6 +10,7 @@ import android.location.Address;
 import java.util.ArrayList;
 import java.util.List;
 
+import pprog2.salleurl.edu.practica_pprog2.model.Comment;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 import pprog2.salleurl.edu.practica_pprog2.model.RecentSearch;
 import pprog2.salleurl.edu.practica_pprog2.repositories.FavoriteFoodLocalsRepo;
@@ -22,6 +23,7 @@ import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
 public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
 
     private static final String TABLE_NAME = "FavoritePlace";
+    private static final String COMMENT_TABLE_NAME = "CommmentFavorite";
     private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_TYPE = "type";
@@ -32,6 +34,8 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
     private static final String COLUMN_CLOSING_HOUR = "closingHour";
     private static final String COLUMN_RATING = "rating";
     private static final String COLUMN_DESCRIPTION_HOUR = "description";
+    private static final String COLUMN_COMMENT = "comment";
+    private static final String COLUMN_COMMENT_LOCAL = "local_name";
 
     private Context context;
 
@@ -123,5 +127,45 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
         long count = DatabaseUtils.queryNumEntries(db, TABLE_NAME, whereClause, whereArgs);
 
         return count > 0;
+    }
+
+    @Override
+    public List<Comment> getComments(String foodLocal) {
+        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+        String whereClause = COLUMN_COMMENT_LOCAL + " =?";
+        String orderByClause = COLUMN_COMMENT + " ASC";
+        String[] whereArgs = {foodLocal};
+
+        Cursor cursor = helper.getReadableDatabase().query(COMMENT_TABLE_NAME, null, whereClause,
+                whereArgs, null, null, orderByClause, null);
+        ArrayList<Comment> commentsLocal = new ArrayList<>();
+
+        if (cursor != null) {
+            // Movemos el cursor a la primera instancia. Si el cursor está vacío, devolverá falso.
+            if (cursor.moveToFirst()) {
+                do {
+                    String comment = cursor.getString(cursor.getColumnIndex(COLUMN_COMMENT));
+                    String user = cursor.getString(cursor.getColumnIndex(COLUMN_USER_EMAIL));
+
+                    commentsLocal.add(new Comment(comment,user));
+                } while (cursor.moveToNext());
+            }
+            //Cerramos el cursor al terminar.
+            cursor.close();
+        }
+        return commentsLocal;    }
+
+    @Override
+    public void addComment(String userEmail, String comment, String localName) {
+        // Recuperamos una instancia del DatabaseHelper para poder acceder a la base de datos.
+        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+
+        // Creamos los valores a añadir a la base de datos mediante un conjunto <Clave, Valor>.
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_COMMENT, comment);
+        values.put(COLUMN_USER_EMAIL, userEmail);
+        values.put(COLUMN_COMMENT_LOCAL, localName);
+        // Obtenemos la base de datos en modo escritura e inserimos los valores en la Tabla
+        helper.getWritableDatabase().insert(COMMENT_TABLE_NAME, null, values);
     }
 }

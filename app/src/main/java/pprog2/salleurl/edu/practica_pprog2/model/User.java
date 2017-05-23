@@ -31,7 +31,7 @@ public class User {
         this.email = email;
         this.sexo = sexo;
         if (image == null) {
-            profileImage = BitmapFactory.decodeResource(ctx.getResources(), R.mipmap.ic_launcher);
+            profileImage = BitmapFactory.decodeResource(ctx.getResources(), R.mipmap.ic_launcher_round);
         } else {
             profileImage = BitmapFactory.decodeByteArray(image, 0, image.length);
         }

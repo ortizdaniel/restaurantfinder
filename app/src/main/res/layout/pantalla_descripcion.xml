@@ -94,6 +94,7 @@
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
+            android:clickable="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <android.support.design.widget.TextInputLayout
@@ -119,6 +120,7 @@
             android:layout_gravity="end"
             android:text="@string/send"
             android:layout_below="@+id/add_comment_layout"
-            android:layout_alignEnd="@+id/add_comment_layout" />
+            android:layout_alignEnd="@+id/add_comment_layout"
+            android:onClick="onSendButtonClick"/>
     </RelativeLayout>
 </ScrollView>
