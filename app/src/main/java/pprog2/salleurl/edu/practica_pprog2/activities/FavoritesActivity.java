@@ -58,6 +58,7 @@ public class FavoritesActivity extends AppCompatActivity {
             finish();
         }
     }
+
     private void createToolbar() {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -114,6 +115,18 @@ public class FavoritesActivity extends AppCompatActivity {
                 foodLocals = new ArrayList<>(aList);
                 allFragment.newLocations(foodLocals);
                 onlyOpenFragment.newLocations(foodLocals);
+                for (FoodLocal l : foodLocals) {
+                    boolean trobat = false;
+                    for (String s : restaurantTypes) {
+                        if (l.getType().equals(s)) {
+                            trobat = true;
+                            break;
+                        }
+                    }
+                    if (!trobat) {
+                        restaurantTypes.add(l.getType());
+                    }
+                }
             }
         }
     }
