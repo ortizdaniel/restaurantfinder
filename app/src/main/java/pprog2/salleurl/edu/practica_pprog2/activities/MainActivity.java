@@ -11,6 +11,7 @@ import android.widget.Toast;
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
+import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        usersRepo = new UserServiceDB(getApplicationContext());
 
         username = (TextInputEditText) findViewById(R.id.login);
         password = (TextInputEditText) findViewById(R.id.password);
