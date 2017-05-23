@@ -46,15 +46,15 @@ public class UserServiceDB implements UsersRepo {
 
 
     @Override
-    public User getUser(String username, String password) {
+    public User getUser(String email, String password) {
         User u = null;
         DatabaseHelper helper = DatabaseHelper.getInstance(context);
 
         // Preparamos la cláusula del where. Su formato es: "<nombre columna> = ?" donde ? se
         // sustituirá por el valor añadido en los argumentos.
-        String whereClause = NAME_USER + "=? AND " + PASSWORD_USER + "=?";
+        String whereClause = EMAIL_USER + "=? AND " + PASSWORD_USER + "=?";
 
-        String[] whereArgs = {username,password};
+        String[] whereArgs = {email,password};
 
         Cursor cursor = helper.getReadableDatabase().
                 query(TABLE_NAME_USER, null, whereClause, whereArgs, null, null, null);
@@ -73,9 +73,9 @@ public class UserServiceDB implements UsersRepo {
                     String apellidos = cursor.getString(cursor.getColumnIndex(SURNAME_USER));
                     byte[] image_path = cursor.getBlob(cursor.getColumnIndex(IMAGE_USER));
                     String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_USER));
-                    String email = cursor.getString(cursor.getColumnIndex(EMAIL_USER));
+                    String email_get = cursor.getString(cursor.getColumnIndex(EMAIL_USER));
                     char sexo = cursor.getString(cursor.getColumnIndex(SEXO_USER)).charAt(0);
-                    u = new User(nombre, apellidos, image_path,description,email,sexo, context);
+                    u = new User(nombre, apellidos, image_path,description,email_get,sexo, context);
                 } while (cursor.moveToNext());
             }
             //Cerramos el cursor al terminar.

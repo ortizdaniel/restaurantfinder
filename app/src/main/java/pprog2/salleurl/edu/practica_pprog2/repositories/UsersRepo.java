@@ -8,6 +8,6 @@ import pprog2.salleurl.edu.practica_pprog2.model.User;
 
 public interface UsersRepo {
     void addUser(User u);
-    User getUser(String username, String password);
+    User getUser(String email, String password);
     void updateUser(User u);
 }

@@ -16,7 +16,7 @@ import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServ
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextInputEditText username;
+    private TextInputEditText userEmail;
     private TextInputEditText password;
     private UsersRepo usersRepo;
     private static User actualUser;
@@ -28,16 +28,16 @@ public class MainActivity extends AppCompatActivity {
 
         usersRepo = new UserServiceDB(getApplicationContext());
 
-        username = (TextInputEditText) findViewById(R.id.login);
+        userEmail = (TextInputEditText) findViewById(R.id.login);
         password = (TextInputEditText) findViewById(R.id.password);
     }
     public void onLoginButtonClick(View view){
-        if(username.getText().toString().equals("")){
-            username.setError(getString(R.string.no_login));
+        if(userEmail.getText().toString().equals("")){
+            userEmail.setError(getString(R.string.no_login));
         }else if(password.getText().toString().equals("")){
             password.setError(getString(R.string.no_password));
         }else{
-            User user = usersRepo.getUser(username.getText().toString(),password.getText().toString());
+            User user = usersRepo.getUser(userEmail.getText().toString(),password.getText().toString());
 
             // v Esto de debajo es para el que sergi pueda probar sin loggear v
             /*if(user == null) {
@@ -68,5 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static User getActualUser() {
         return actualUser;
+    }
+    public static void setActualUser(User user){
+        actualUser = user;
     }
 }

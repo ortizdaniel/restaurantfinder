@@ -12,4 +12,5 @@ public interface FavoriteFoodLocalsRepo {
     List<FoodLocal> getFavoriteFoodLocals(String userEmail);
     void insertFavoriteFoodLocal(String userEmail, FoodLocal foodLocal);
     void deleteFavoriteFoodLocal(String userEmail,FoodLocal foodLocal);
+    boolean isFavorite(String userEmail, FoodLocal foodLocal);
 }
