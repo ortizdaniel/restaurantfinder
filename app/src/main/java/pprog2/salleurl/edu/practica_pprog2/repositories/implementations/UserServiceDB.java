@@ -3,7 +3,10 @@ package pprog2.salleurl.edu.practica_pprog2.repositories.implementations;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteStatement;
+import android.widget.Toast;
 
+import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
 import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
@@ -11,26 +14,29 @@ import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
 /**
  * Created by David on 22/05/2017.
  */
-
 public class UserServiceDB implements UsersRepo {
 
     /* Database String Constants */
-    private static final String TABLE_NAME_USER = "User";
-    private static final String NAME_USER = "nombre";
-    private static final String PASSWORD_USER = "password";
-    private static final String SURNAME_USER = "apellidos";
-    private static final String IMAGE_USER = "profileImage";
-    private static final String EMAIL_USER = "email";
-    private static final String SEXO_USER = "sexo";
-    private static final String DESCRIPTION_USER = "description";
+    public static final String TABLE_NAME_USER = "User";
+    public static final String NAME_USER = "nombre";
+    public static final String PASSWORD_USER = "password";
+    public static final String SURNAME_USER = "apellidos";
+    public static final String IMAGE_USER = "profileImage";
+    public static final String EMAIL_USER = "email";
+    public static final String SEXO_USER = "sexo";
+    public static final String DESCRIPTION_USER = "description";
 
-    private Context context;
-    public UserServiceDB(Context context){this.context = context;}
+    private String UPDATE_QUERY = String.format("UPDATE %s SET %s = ?, %s = ?, %s = ?, " +
+            "%s = ?, %s = ? WHERE %s = ?", TABLE_NAME_USER, NAME_USER, SURNAME_USER,
+            IMAGE_USER, SEXO_USER, DESCRIPTION_USER, EMAIL_USER);
+
+    private Context ctx;
+    public UserServiceDB(Context ctx){this.ctx = ctx;}
 
     @Override
     public void addUser(User u) {
         // Recuperamos una instancia del DatabaseHelper para poder acceder a la base de datos.
-        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+        DatabaseHelper helper = DatabaseHelper.getInstance(ctx);
 
         // Creamos los valores a añadir a la base de datos mediante un conjunto <Clave, Valor>.
         ContentValues values = new ContentValues();
@@ -48,7 +54,7 @@ public class UserServiceDB implements UsersRepo {
     @Override
     public User getUser(String username, String password) {
         User u = null;
-        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+        DatabaseHelper helper = DatabaseHelper.getInstance(ctx);
 
         // Preparamos la cláusula del where. Su formato es: "<nombre columna> = ?" donde ? se
         // sustituirá por el valor añadido en los argumentos.
@@ -75,7 +81,7 @@ public class UserServiceDB implements UsersRepo {
                     String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_USER));
                     String email = cursor.getString(cursor.getColumnIndex(EMAIL_USER));
                     char sexo = cursor.getString(cursor.getColumnIndex(SEXO_USER)).charAt(0);
-                    u = new User(nombre, apellidos, image_path,description,email,sexo, context);
+                    u = new User(nombre, apellidos, image_path,description,email,sexo, ctx);
                 } while (cursor.moveToNext());
             }
             //Cerramos el cursor al terminar.
@@ -86,7 +92,24 @@ public class UserServiceDB implements UsersRepo {
 
     @Override
     public void updateUser(User u) {
-
+        SQLiteStatement stmt = DatabaseHelper.getInstance(ctx).getWritableDatabase().compileStatement(UPDATE_QUERY);
+        stmt.bindString(1, u.getNombre());
+        stmt.bindString(2, u.getApellidos());
+        byte[] imagenBytes = u.getImagenBytes();
+        if (imagenBytes == null) {
+            stmt.bindNull(3);
+        } else {
+            stmt.bindBlob(3, imagenBytes);
+        }
+        stmt.bindString(4, String.valueOf(u.getSexo()));
+        stmt.bindString(5, u.getDescription());
+        stmt.bindString(6, u.getEmail());
+        if (stmt.executeUpdateDelete() > 0) {
+            Toast.makeText(ctx, ctx.getString(R.string.information_updated_success),
+                    Toast.LENGTH_LONG).show();
+        } else {
+            Toast.makeText(ctx, ctx.getString(R.string.information_update_error),
+                    Toast.LENGTH_LONG).show();
+        }
     }
-
 }

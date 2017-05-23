@@ -3,6 +3,9 @@ package pprog2.salleurl.edu.practica_pprog2.model;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
+
+import java.io.ByteArrayOutputStream;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 
@@ -18,6 +21,7 @@ public class User {
     private String nombre;
     private String apellidos;
     private Bitmap profileImage;
+    private byte[] imagenBytes;
     private String email;
     private char sexo;
     private String description;
@@ -35,7 +39,7 @@ public class User {
         } else {
             profileImage = BitmapFactory.decodeByteArray(image, 0, image.length);
         }
-        //Environment.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        imagenBytes = image;
     }
 
     public String getNombre() {
@@ -60,6 +64,10 @@ public class User {
 
     public void setProfileImage(Bitmap profileImage) {
         this.profileImage = profileImage;
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        profileImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+        byte[] imagenBytes = stream.toByteArray();
+        this.imagenBytes = imagenBytes;
     }
 
     public String getEmail() {
@@ -85,7 +93,12 @@ public class User {
     public void setDescription(String description) {
         this.description = description;
     }
+
     public String  getProfileImageName(){
         return null;
+    }
+
+    public byte[] getImagenBytes() {
+        return imagenBytes;
     }
 }

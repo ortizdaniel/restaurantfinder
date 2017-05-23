@@ -20,6 +20,7 @@ import java.io.ByteArrayOutputStream;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
+import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;
 import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
 
 /**
@@ -31,8 +32,11 @@ import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
 public class RegisterActivity extends AppCompatActivity {
 
     private static final int TAKE_PICTURE = 1;
-    private static final String QUERY = "INSERT INTO User(nombre, apellidos, profileImage," +
-            "email, sexo, password, description) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    private static final String QUERY = String.format("INSERT INTO %s(%s, %s, %s, " +
+            "%s, %s, %s, %s) VALUES (?, ?, ?, ?, ?, ?, ?)",
+            UserServiceDB.TABLE_NAME_USER, UserServiceDB.NAME_USER, UserServiceDB.SURNAME_USER,
+            UserServiceDB.IMAGE_USER, UserServiceDB.EMAIL_USER, UserServiceDB.SEXO_USER,
+            UserServiceDB.PASSWORD_USER, UserServiceDB.DESCRIPTION_USER);
 
     private ImageView profileImage;
     private EditText txtName;
@@ -71,11 +75,11 @@ public class RegisterActivity extends AppCompatActivity {
         if (accept.isChecked()) {
             String name = txtName.getText().toString();
             String surname = txtSurname.getText().toString();
-            //IMAGE TAKEN AQUI
+
             String email = txtEmail.getText().toString();
             String password = txtPassword.getText().toString();
             String confirmPassword = txtConfirmPassword.getText().toString();
-            char sex = isMale.isSelected() ? User.MALE : User.FEMALE;
+            char sex = isMale.isChecked() ? User.MALE : User.FEMALE;
             String description = txtDescription.getText().toString();
 
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() ||
@@ -92,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 if (imageTaken == null) {
                     stmt.bindNull(3);
                 } else {
-                    stmt.bindBlob(3, imageTaken); //TODO CORREGIR IMAGEN ESTA A NULO AHORA
+                    stmt.bindBlob(3, imageTaken);
                 }
                 stmt.bindString(4, email);
                 stmt.bindString(5, String.valueOf(sex));

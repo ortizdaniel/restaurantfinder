@@ -96,7 +96,7 @@ public class ResultsActivity extends AppCompatActivity {
 
         MenuItem item = menu.findItem(R.id.activity_results_menu_spinner);
         actionBarSpinner = (Spinner) MenuItemCompat.getActionView(item);
-        adapter = new ArrayAdapter<String>(
+        adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, restaurantTypes);
         actionBarSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

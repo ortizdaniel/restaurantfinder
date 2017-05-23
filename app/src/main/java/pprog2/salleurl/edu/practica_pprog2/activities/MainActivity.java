@@ -50,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, getString(R.string.unable_login), Toast.LENGTH_SHORT)
                         .show();
             }else{
-                Log.d("DANI", user.getEmail());
-                Log.d("DANI", user.getNombre());
                 actualUser = user;
                 /* Llamamos a la Activity de Busqueda */
                 Intent intent = new Intent(this,SearchActivity.class);
@@ -60,7 +58,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void onRegisterButtonClick(View view){
-        //TODO esperando a k dani haga su clase
         /* Llamamos a la actividad de Registro */
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
