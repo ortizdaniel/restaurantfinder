@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
             String description = txtDescription.getText().toString();
 
             if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() ||
-                    description.isEmpty() || imageTaken == null) {
+                    description.isEmpty()) {
                 Toast.makeText(this, str(R.string.fields_empty), Toast.LENGTH_LONG).show();
                 return;
             }
@@ -89,7 +89,11 @@ public class RegisterActivity extends AppCompatActivity {
                 SQLiteStatement stmt = db.compileStatement(QUERY);
                 stmt.bindString(1, name);
                 stmt.bindString(2, surname);
-                stmt.bindBlob(3, imageTaken); //TODO CORREGIR IMAGEN ESTA A NULO AHORA
+                if (imageTaken == null) {
+                    stmt.bindNull(3);
+                } else {
+                    stmt.bindBlob(3, imageTaken); //TODO CORREGIR IMAGEN ESTA A NULO AHORA
+                }
                 stmt.bindString(4, email);
                 stmt.bindString(5, String.valueOf(sex));
                 stmt.bindString(6, password);

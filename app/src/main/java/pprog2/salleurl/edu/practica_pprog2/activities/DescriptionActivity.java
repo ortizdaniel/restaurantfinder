@@ -95,7 +95,8 @@ public class DescriptionActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
-                /* profile Intent */
+                Intent i = new Intent(this, ProfileActivity.class);
+                startActivity(i);
                 break;
             default:
 

@@ -37,12 +37,21 @@
             android:windowSoftInputMode="adjustPan">
 
         </activity>
-        <activity android:name=".activities.ResultsActivity"/>
+        <activity android:name=".activities.ResultsActivity"></activity>
         <activity
             android:name=".activities.FavoritesActivity"
             android:label="@string/title_activity_favorites"
-            android:theme="@style/AppTheme"/>
-        <activity android:name=".activities.RegisterActivity"/>
+            android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:theme="@style/AppBarTheme"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:theme="@style/AppBarTheme"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>
