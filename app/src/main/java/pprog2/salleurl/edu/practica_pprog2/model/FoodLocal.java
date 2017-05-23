@@ -163,15 +163,15 @@ public class FoodLocal implements Parcelable {
                 break;
 
             case "Restaurante":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_restaurante;
                 break;
 
             case "Nepali":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_nepali;
                 break;
 
             case "Frankfurt":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_frankfurt;
                 break;
 
             case "Cafe":
@@ -179,26 +179,26 @@ public class FoodLocal implements Parcelable {
                 break;
 
             case "Braseria":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_braseria;
                 break;
 
             case "Tapas":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_tapas;
                 break;
             case "Mejicano":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_mejicano;
                 break;
 
             case "Asador":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_asador;
                 break;
 
             case "Marisqueria":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_marisqueria;
                 break;
 
             case "Bar":
-                imageId = R.mipmap.ic_launcher;
+                imageId = R.mipmap.ic_bar;
                 break;
 
             default:

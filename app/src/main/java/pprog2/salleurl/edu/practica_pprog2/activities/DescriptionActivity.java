@@ -19,6 +19,8 @@ import android.widget.TextView;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
+import pprog2.salleurl.edu.practica_pprog2.repositories.FavoriteFoodLocalsRepo;
+import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.FavoriteFoodLocalsDB;
 
 /**
  * Created by David on 29/03/2017.krtr
@@ -32,7 +34,7 @@ public class DescriptionActivity extends AppCompatActivity {
     private RatingBar localRatingBar;
     private TextView localDescriptionTextView;
     private FoodLocal foodLocal;
-
+    private FavoriteFoodLocalsRepo favoriteFoodLocalsRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,7 @@ public class DescriptionActivity extends AppCompatActivity {
         favorited = false;
         favButton = (FloatingActionButton) findViewById(R.id.favButton);
         foodLocal = null;
+        favoriteFoodLocalsRepo = new FavoriteFoodLocalsDB(getApplicationContext());
         Intent intent = getIntent();
         if (intent != null && intent.getExtras() != null) {
             Bundle bundle = intent.getExtras();
@@ -65,8 +68,14 @@ public class DescriptionActivity extends AppCompatActivity {
         favorited = !favorited;
         if (favorited){
             favButton.setImageResource(R.drawable.favorite);
+            /* Add the place to favorites list */
+            favoriteFoodLocalsRepo.insertFavoriteFoodLocal(MainActivity.getActualUser().getEmail(),
+                    foodLocal);
         }else{
             favButton.setImageResource(R.drawable.favorite_empty);
+            /* Delete the favorite place from DB */
+            favoriteFoodLocalsRepo.deleteFavoriteFoodLocal(MainActivity.getActualUser().getEmail(),
+                    foodLocal);
         }
     }
 
@@ -76,6 +85,7 @@ public class DescriptionActivity extends AppCompatActivity {
         inflater.inflate(R.menu.action_bar_menu_favorite_profile, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem){
         switch (menuItem.getItemId()){

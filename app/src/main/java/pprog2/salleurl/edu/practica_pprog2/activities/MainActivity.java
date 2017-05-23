@@ -13,6 +13,7 @@ import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.UsersRepo;
 import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;
 
+
 public class MainActivity extends AppCompatActivity {
 
     private TextInputEditText username;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 Log.d("DANI", user.getEmail());
                 Log.d("DANI", user.getNombre());
+                actualUser = user;
                 /* Llamamos a la Activity de Busqueda */
                 Intent intent = new Intent(this,SearchActivity.class);
                 startActivity(intent);

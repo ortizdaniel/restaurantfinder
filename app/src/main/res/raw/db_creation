@@ -19,7 +19,7 @@ CREATE TABLE User(
 );
 
 CREATE TABLE FavoritePlace(
-    user_id INTEGER,
+    user_email TEXT,
     name TEXT,
     type TEXT,
     latitude DOUBLE,
