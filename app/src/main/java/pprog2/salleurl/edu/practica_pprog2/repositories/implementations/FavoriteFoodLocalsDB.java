@@ -20,7 +20,7 @@ import pprog2.salleurl.edu.practica_pprog2.utils.DatabaseHelper;
 public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
 
     private static final String TABLE_NAME = "FavoritePlace";
-    private static final String COLUMN_USER_ID = "user_id";
+    private static final String COLUMN_USER_EMAIL = "user_email";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_TYPE = "type";
     private static final String COLUMN_LATITUDE = "latitude";
@@ -39,12 +39,13 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
 
 
     @Override
-    public List<FoodLocal> getFavoriteFoodLocals(int userId) {
+    public List<FoodLocal> getFavoriteFoodLocals(String userEmail) {
         DatabaseHelper helper = DatabaseHelper.getInstance(context);
-        String whereClause = COLUMN_USER_ID + " = " + userId;
+        String whereClause = COLUMN_USER_EMAIL + " = ?";
         String orderByClause = COLUMN_NAME + " ASC";
+        String[] whereArgs = {userEmail};
 
-        Cursor cursor = helper.getReadableDatabase().query(TABLE_NAME, null, whereClause, null, null, null, orderByClause, null);
+        Cursor cursor = helper.getReadableDatabase().query(TABLE_NAME, null, whereClause, whereArgs, null, null, orderByClause, null);
         ArrayList<FoodLocal> favoriteLocals = new ArrayList<>();
 
         if (cursor != null) {
@@ -72,10 +73,10 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
     }
 
     @Override
-    public void insertFavoriteFoodLocal(int userId, FoodLocal foodLocal) {
+    public void insertFavoriteFoodLocal(String userEmail, FoodLocal foodLocal) {
         DatabaseHelper helper = DatabaseHelper.getInstance(context);
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_ID,userId);
+        values.put(COLUMN_USER_EMAIL,userEmail);
         values.put(COLUMN_NAME, foodLocal.getName());
         values.put(COLUMN_TYPE, foodLocal.getType());
         values.put(COLUMN_LATITUDE, foodLocal.getLatitude());
@@ -87,5 +88,21 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
         values.put(COLUMN_DESCRIPTION_HOUR, foodLocal.getDescription());
 
         helper.getWritableDatabase().insert(TABLE_NAME, null, values);
+    }
+
+    @Override
+    public void deleteFavoriteFoodLocal(String userEmail, FoodLocal foodLocal) {
+        // Recuperamos una instancia del DatabaseHelper para poder acceder a la base de datos.
+        DatabaseHelper helper = DatabaseHelper.getInstance(context);
+
+        // Preparamos la cláusula del where. Su formato es: "<nombre columna> = ?" donde ? se
+        // sustituirá por el valor añadido en los argumentos.
+        String whereClause = COLUMN_USER_EMAIL + "=? and " + COLUMN_ADDRESS + "=?";
+        // Preparamos los argumentos a sustituir por los '?' de la cláusula.
+        String[] whereArgs = {userEmail, foodLocal.getAddress()};
+
+        helper.getWritableDatabase().delete(TABLE_NAME, whereClause, whereArgs);
+        // El delete anterior equivale a la query SQL:
+        // delete from TABLE_NAME where COLUMN_NAME=p.getName() and COLUMN_SURNAME=p.getSurname();
     }
 }

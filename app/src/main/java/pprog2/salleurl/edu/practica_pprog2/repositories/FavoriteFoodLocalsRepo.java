@@ -9,6 +9,7 @@ import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
  */
 
 public interface FavoriteFoodLocalsRepo {
-    List<FoodLocal> getFavoriteFoodLocals(int userId);
-    void insertFavoriteFoodLocal(int userId, FoodLocal foodLocal);
+    List<FoodLocal> getFavoriteFoodLocals(String userEmail);
+    void insertFavoriteFoodLocal(String userEmail, FoodLocal foodLocal);
+    void deleteFavoriteFoodLocal(String userEmail,FoodLocal foodLocal);
 }

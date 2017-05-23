@@ -51,9 +51,16 @@ public class FavoritesActivity extends AppCompatActivity {
         favoritesRepo = new FavoriteFoodLocalsDB(this);
         createTabs();
         createToolbar();
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
         User actualUser = MainActivity.getActualUser();
+
         if (actualUser != null) {
-            //new AsyncRequest(this).execute(MainActivity.getActualUser().getId().toString());
+            new AsyncRequest(this).execute(MainActivity.getActualUser().getEmail());
         } else {
             finish();
         }
@@ -99,7 +106,7 @@ public class FavoritesActivity extends AppCompatActivity {
 
         @Override
         protected List<FoodLocal> doInBackground(String... params) {
-            return favoritesRepo.getFavoriteFoodLocals(Integer.parseInt(params[0]));
+            return favoritesRepo.getFavoriteFoodLocals(params[0]);
         }
 
         @Override
