@@ -122,8 +122,7 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.menu_profile_action_button:
-                Intent profileIntent = new Intent();
-                //TODO: añadir clase de perfil
+                Intent profileIntent = new Intent(this, ProfileActivity.class);
                 startActivity(profileIntent);
                 break;
             default:

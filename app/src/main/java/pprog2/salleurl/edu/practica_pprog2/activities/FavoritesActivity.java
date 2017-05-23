@@ -53,7 +53,7 @@ public class FavoritesActivity extends AppCompatActivity {
         createToolbar();
         User actualUser = MainActivity.getActualUser();
         if (actualUser != null) {
-            new AsyncRequest(this).execute(MainActivity.getActualUser().getId().toString());
+            //new AsyncRequest(this).execute(MainActivity.getActualUser().getEmail()); TODO CORREGIR
         } else {
             finish();
         }

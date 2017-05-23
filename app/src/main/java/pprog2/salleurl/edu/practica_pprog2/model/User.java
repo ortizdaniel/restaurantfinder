@@ -1,7 +1,10 @@
 package pprog2.salleurl.edu.practica_pprog2.model;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+
+import pprog2.salleurl.edu.practica_pprog2.R;
 
 /**
  * Created by David on 22/05/2017.
@@ -21,13 +24,17 @@ public class User {
 
     public User(){}
 
-    public User(String nombre,String  apellidos,byte[] image,String description,String email,char sexo){
+    public User(String nombre, String  apellidos, byte[] image, String description, String email, char sexo, Context ctx){
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.description = description;
         this.email = email;
         this.sexo = sexo;
-        profileImage = BitmapFactory.decodeByteArray(image, 0, image.length);
+        if (image == null) {
+            profileImage = BitmapFactory.decodeResource(ctx.getResources(), R.mipmap.ic_launcher);
+        } else {
+            profileImage = BitmapFactory.decodeByteArray(image, 0, image.length);
+        }
         //Environment.getExternalFilesDir(Environment.DIRECTORY_PICTURES);
     }
 

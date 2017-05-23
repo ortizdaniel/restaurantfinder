@@ -18,7 +18,13 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.DescriptionActivity"
             android:theme="@style/AppBarTheme"
@@ -29,17 +35,23 @@
             android:theme="@style/AppBarTheme"
             android:configChanges="orientation|screenSize"
             android:windowSoftInputMode="adjustPan">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activities.ResultsActivity"></activity>
         <activity
             android:name=".activities.FavoritesActivity"
             android:label="@string/title_activity_favorites"
             android:theme="@style/AppTheme"></activity>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:theme="@style/AppBarTheme"
+            android:configChanges="orientation|screenSize">
+        </activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:theme="@style/AppBarTheme"
+            android:configChanges="orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

@@ -75,7 +75,7 @@ public class UserServiceDB implements UsersRepo {
                     String description = cursor.getString(cursor.getColumnIndex(DESCRIPTION_USER));
                     String email = cursor.getString(cursor.getColumnIndex(EMAIL_USER));
                     char sexo = cursor.getString(cursor.getColumnIndex(SEXO_USER)).charAt(0);
-                    u = new User(nombre, apellidos, image_path,description,email,sexo);
+                    u = new User(nombre, apellidos, image_path,description,email,sexo, context);
                 } while (cursor.moveToNext());
             }
             //Cerramos el cursor al terminar.
