@@ -47,13 +47,13 @@ public class FavoritesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
         restaurantTypes = new ArrayList<>();
-        restaurantTypes.add("ALL");
+        restaurantTypes.add(getString(R.string.all_types));
         favoritesRepo = new FavoriteFoodLocalsDB(this);
         createTabs();
         createToolbar();
         User actualUser = MainActivity.getActualUser();
         if (actualUser != null) {
-            new AsyncRequest(this).execute(MainActivity.getActualUser().getId().toString());
+            //new AsyncRequest(this).execute(MainActivity.getActualUser().getId().toString());
         } else {
             finish();
         }
@@ -71,8 +71,8 @@ public class FavoritesActivity extends AppCompatActivity {
         allFragment = new ResultsListViewFragment();
         onlyOpenFragment = new ResultsListViewFragment();
 
-        entries.add(new TabAdapter.TabEntry(allFragment, "All"));
-        entries.add(new TabAdapter.TabEntry(onlyOpenFragment, "ONLY OPEN"));
+        entries.add(new TabAdapter.TabEntry(allFragment, getString(R.string.all_types)));
+        entries.add(new TabAdapter.TabEntry(onlyOpenFragment, getString(R.string.only_open)));
 
         TabAdapter adapter = new TabAdapter(getSupportFragmentManager(), entries);
         viewPager.setAdapter(adapter);
