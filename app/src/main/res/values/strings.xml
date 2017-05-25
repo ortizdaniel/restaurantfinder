@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="app_name">Practica</string>
+    <string name="app_name"></string>
 
     <!-- Strings related to login -->
     <string name="username">Username</string>
@@ -19,9 +19,10 @@
     <string name="unable_login">Error: Wrong login/password</string>
 
     <string name="please_wait">Please wait</string>
+    <string name="spinner_Title">ActionBar Spinner</string>
 
     <!-- Strings related to Search Activity -->
-    <string name="search_activity_title">Search a location</string>
+    <string name="search_activity_title"></string>
     <string name="favorite_button_title">Favorites</string>
     <string name="profile_button_title">Profile</string>
     <string name="search_geolocation_button_desc">Button to show restaurants on the indicated radius</string>
@@ -46,7 +47,7 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_favorites">FavoritesActivity</string>
+    <string name="title_activity_favorites"></string>
 
 
     <string name="take_picture">Take picture</string>

@@ -4,7 +4,7 @@
     <item
         android:id="@+id/activity_favorites_menu_spinner"
         android:background="#ff00"
-        android:title="ActionBar Spinner"
+        android:title="@string/spinner_Title"
         app:actionViewClass="android.widget.Spinner"
         app:showAsAction="always" />
     <item

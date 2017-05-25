@@ -51,7 +51,6 @@ public class FavoritesActivity extends AppCompatActivity {
         favoritesRepo = new FavoriteFoodLocalsDB(this);
         createTabs();
         createToolbar();
-
     }
 
     @Override
