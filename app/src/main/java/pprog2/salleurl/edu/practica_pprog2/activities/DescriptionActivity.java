@@ -21,7 +21,6 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import pprog2.salleurl.edu.practica_pprog2.MapsActivity;
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.adapters.CommentsAdapter;
 import pprog2.salleurl.edu.practica_pprog2.model.Comment;

@@ -1,4 +1,4 @@
-package pprog2.salleurl.edu.practica_pprog2;
+package pprog2.salleurl.edu.practica_pprog2.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.activities.FavoritesActivity;
 import pprog2.salleurl.edu.practica_pprog2.activities.ProfileActivity;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
