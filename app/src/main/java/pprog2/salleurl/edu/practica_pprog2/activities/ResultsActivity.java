@@ -122,7 +122,7 @@ public class ResultsActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, FavoritesActivity.class);
                 startActivity(intent);
                 break;
-            case R.id.menu_profile_action_button:
+            case R.id.menu_profile_button:
                 Intent profileIntent = new Intent(this, ProfileActivity.class);
                 startActivity(profileIntent);
                 break;

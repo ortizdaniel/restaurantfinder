@@ -168,6 +168,8 @@ public class FavoritesActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.activity_favorites_menu_profile_button:
+                Intent intent = new Intent(this, ProfileActivity.class);
+                startActivity(intent);
                 break;
             default:
                 break;
