@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 
-import java.io.ByteArrayOutputStream;
-
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
 import pprog2.salleurl.edu.practica_pprog2.repositories.implementations.UserServiceDB;

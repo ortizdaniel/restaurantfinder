@@ -77,7 +77,8 @@
                 android:layout_alignParentEnd="true"
                 android:backgroundTint="@color/white"
                 android:contentDescription="@string/map_button"
-                app:srcCompat="@drawable/map_button" />
+                app:srcCompat="@drawable/map_button"
+                android:onClick="onMapButtonClick"/>
         </RelativeLayout>
         <TextView
             android:layout_width="match_parent"

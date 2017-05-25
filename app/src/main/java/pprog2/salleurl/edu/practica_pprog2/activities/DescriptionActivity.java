@@ -18,10 +18,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
+import pprog2.salleurl.edu.practica_pprog2.MapsActivity;
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.adapters.CommentsAdapter;
 import pprog2.salleurl.edu.practica_pprog2.model.Comment;
@@ -109,6 +109,12 @@ public class DescriptionActivity extends AppCompatActivity {
             favoriteFoodLocalsRepo.deleteFavoriteFoodLocal(MainActivity.getActualUser().getEmail(),
                     foodLocal);
         }
+    }
+
+    public void onMapButtonClick(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra(MapsActivity.RESTRAURANT_EXTRA, foodLocal);
+        startActivity(intent);
     }
 
     @Override
