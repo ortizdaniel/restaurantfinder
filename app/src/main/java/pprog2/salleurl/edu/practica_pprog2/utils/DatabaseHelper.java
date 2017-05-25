@@ -21,7 +21,7 @@ import pprog2.salleurl.edu.practica_pprog2.R;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String name = "food_db";
-    private static final int version = 6;
+    private static final int version = 7;
     private static SQLiteDatabase.CursorFactory factory;
 
     // Instancia del patron de diseño SINGLETON

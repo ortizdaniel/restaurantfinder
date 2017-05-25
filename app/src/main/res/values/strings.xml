@@ -69,6 +69,7 @@
     <string name="information_update_error">Could not update the information correctly</string>
 
     <string name="unable_comment">You must add a comment to send it</string>
+    <string name="comments">Comments</string>
 
 
 </resources>
