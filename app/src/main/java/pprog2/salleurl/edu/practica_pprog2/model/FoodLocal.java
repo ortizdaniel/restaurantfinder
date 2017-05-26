@@ -207,4 +207,68 @@ public class FoodLocal implements Parcelable {
         }
         return imageId;
     }
+    public static int getBigImageResourceId(String type) {
+        int imageId;
+        switch (type) {
+            case "Oriental":
+                imageId =  R.drawable.japonesa;
+                break;
+
+            case "Take Away":
+                imageId =  R.drawable.takeaway;
+                break;
+
+            case "Italiano":
+                imageId = R.drawable.italiana;
+                break;
+
+            case "Hamburgueseria":
+                imageId = R.drawable.hamburguesa;
+                break;
+
+            case "Restaurante":
+                imageId = R.drawable.restaurante;
+                break;
+
+            case "Nepali":
+                imageId = R.drawable.nepali;
+                break;
+
+            case "Frankfurt":
+                imageId = R.drawable.frankufrt;
+                break;
+
+            case "Cafe":
+                imageId = R.drawable.cafe;
+                break;
+
+            case "Braseria":
+                imageId = R.drawable.braseria;
+                break;
+
+            case "Tapas":
+                imageId = R.drawable.tapas;
+                break;
+            case "Mejicano":
+                imageId = R.drawable.mejicano;
+                break;
+
+            case "Asador":
+                imageId = R.drawable.asador;
+                break;
+
+            case "Marisqueria":
+                imageId = R.drawable.marisqueria;
+                break;
+
+            case "Bar":
+                imageId = R.drawable.bar;
+                break;
+
+            default:
+                imageId = R.mipmap.ic_launcher_round;
+                break;
+        }
+        return imageId;
+    }
 }

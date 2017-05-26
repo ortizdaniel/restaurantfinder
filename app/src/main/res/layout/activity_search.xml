@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/search_search_text_input_hint"
                 android:inputType="text"
-                android:imeOptions="actionDone"/>
+                android:imeOptions="actionSearch"/>
         </android.support.design.widget.TextInputLayout>
 
         <ImageButton

@@ -68,7 +68,7 @@ public class DescriptionActivity extends AppCompatActivity {
             localDescriptionTextView = (TextView) findViewById(R.id.placeDescription);
             localRatingBar = (RatingBar) findViewById(R.id.rating_stars);
 
-            localImageView.setImageResource(FoodLocal.getImageResourceId(foodLocal.getType()));
+            localImageView.setImageResource(FoodLocal.getBigImageResourceId(foodLocal.getType()));
             localNameTextView.setText(foodLocal.getName());
             localDescriptionTextView.setText(foodLocal.getDescription());
             localRatingBar.setRating((float)foodLocal.getRating());
