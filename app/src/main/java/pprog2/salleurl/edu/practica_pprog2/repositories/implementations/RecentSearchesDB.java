@@ -76,7 +76,7 @@ public class RecentSearchesDB implements RecentSearchesRepo {
         } else {
             values.put(COLUMN_IS_TEXT, 0);
             values.put(COLUMN_LATITUDE, recentSearch.getLatitude());
-            values.put(COLUMN_LONGITUDE, recentSearch.getLatitude());
+            values.put(COLUMN_LONGITUDE, recentSearch.getLongitude());
             values.put(COLUMN_RADIUS, recentSearch.getRadius());
         }
         helper.getWritableDatabase().insert(TABLE_NAME, null, values);
