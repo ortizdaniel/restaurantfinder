@@ -100,17 +100,17 @@
             android:textColor="@color/black"
             android:layout_below="@id/placeDescription"
             android:text="@string/comments"/>
-        <ListView
+        <LinearLayout
             android:id="@+id/listview_comments"
             android:layout_below="@id/comments_title"
             android:layout_marginStart="10dp"
             android:paddingBottom="16dp"
             android:paddingLeft="16dp"
+            android:orientation="vertical"
             android:paddingRight="16dp"
             android:paddingTop="16dp"
-            android:clickable="true"
             android:layout_width="match_parent"
-            android:layout_height="140dp" />
+            android:layout_height="wrap_content"/>
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

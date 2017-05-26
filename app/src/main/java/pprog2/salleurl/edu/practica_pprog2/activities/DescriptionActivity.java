@@ -17,14 +17,13 @@ import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.List;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
-import pprog2.salleurl.edu.practica_pprog2.adapters.CommentsAdapter;
 import pprog2.salleurl.edu.practica_pprog2.model.Comment;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 import pprog2.salleurl.edu.practica_pprog2.repositories.FavoriteFoodLocalsRepo;
@@ -43,9 +42,8 @@ public class DescriptionActivity extends AppCompatActivity {
     private TextView localDescriptionTextView;
     private FoodLocal foodLocal;
     private FavoriteFoodLocalsRepo favoriteFoodLocalsRepo;
-    private ListView lvComments;
+    private LinearLayout llComments;
     private TextInputEditText comment;
-    private CommentsAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +52,7 @@ public class DescriptionActivity extends AppCompatActivity {
         favorited = false;
         favButton = (FloatingActionButton) findViewById(R.id.favButton);
         comment = (TextInputEditText) findViewById(R.id.add_comment);
-        lvComments = (ListView) findViewById(R.id.listview_comments);
+        llComments = (LinearLayout) findViewById(R.id.listview_comments);
         foodLocal = null;
         favoriteFoodLocalsRepo = new FavoriteFoodLocalsDB(getApplicationContext());
         Intent intent = getIntent();
@@ -90,11 +88,16 @@ public class DescriptionActivity extends AppCompatActivity {
             }
         });
         List<Comment> comments = favoriteFoodLocalsRepo.getComments(foodLocal.getName());
+        for(Comment c : comments){
+            TextView tvComments = new TextView(this);
+            tvComments.setText("@" + c.getUser() + ":  " + c.getCommment());
+            llComments.addView(tvComments);
+        }
         // Creem l'adapter.
-        adapter = new CommentsAdapter(this,comments);
+        //adapter = new CommentsAdapter(this,comments);
 
         // El vinculem a la ListView.
-        lvComments.setAdapter(adapter);
+        //lvComments.setAdapter(adapter);
     }
 
     public void onSendButtonClick(View view){
@@ -107,8 +110,9 @@ public class DescriptionActivity extends AppCompatActivity {
         }else{
             favoriteFoodLocalsRepo.addComment(MainActivity.getActualUser().getEmail(),
                     comment.getText().toString(),foodLocal.getName());
-            adapter.setCommentsList(favoriteFoodLocalsRepo.getComments(foodLocal.getName()));
-            adapter.notifyDataSetChanged();
+            TextView tvComments = new TextView(this);
+            tvComments.setText("@"+MainActivity.getActualUser().getNombre() + ":  " + comment.getText().toString());
+            llComments.addView(tvComments);
         }
     }
 
