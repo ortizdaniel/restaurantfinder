@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
@@ -30,8 +33,22 @@ public class MainActivity extends AppCompatActivity {
 
         userEmail = (TextInputEditText) findViewById(R.id.login);
         password = (TextInputEditText) findViewById(R.id.password);
+
+        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    login();
+                    return true;
+                }
+                return false;
+            }
+        });
     }
     public void onLoginButtonClick(View view){
+        login();
+    }
+    private void login(){
         if(userEmail.getText().toString().equals("")){
             userEmail.setError(getString(R.string.no_login));
         }else if(password.getText().toString().equals("")){
@@ -39,12 +56,6 @@ public class MainActivity extends AppCompatActivity {
         }else{
             User user = usersRepo.getUser(userEmail.getText().toString(),password.getText().toString());
 
-            // v Esto de debajo es para el que sergi pueda probar sin loggear v
-            /*if(user == null) {
-                user = new User();
-            }*/
-            //User user = new User();
-            //hasta aqui
             if(user == null){
                 /* Login Unable */
                 Toast.makeText(this, getString(R.string.unable_login), Toast.LENGTH_SHORT)

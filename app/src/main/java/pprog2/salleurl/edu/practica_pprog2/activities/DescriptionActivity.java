@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -76,6 +78,17 @@ public class DescriptionActivity extends AppCompatActivity {
                 favButton.setImageResource(R.drawable.favorite);
             }
         }
+
+        comment.setOnEditorActionListener(new TextInputEditText.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_GO) {
+                    sendComment();
+                    return true;
+                }
+                return false;
+            }
+        });
         List<Comment> comments = favoriteFoodLocalsRepo.getComments(foodLocal.getName());
         // Creem l'adapter.
         adapter = new CommentsAdapter(this,comments);
@@ -85,6 +98,10 @@ public class DescriptionActivity extends AppCompatActivity {
     }
 
     public void onSendButtonClick(View view){
+        sendComment();
+    }
+
+    private void sendComment(){
         if(comment.getText().toString().equals("")){
             comment.setError(getString(R.string.unable_comment));
         }else{
