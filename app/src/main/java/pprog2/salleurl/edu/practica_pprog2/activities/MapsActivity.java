@@ -14,8 +14,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
-import pprog2.salleurl.edu.practica_pprog2.activities.FavoritesActivity;
-import pprog2.salleurl.edu.practica_pprog2.activities.ProfileActivity;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 
 public class MapsActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -42,6 +40,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.action_bar_menu_favorite_profile, menu);
+        setTitle(foodLocal.getName());
         return true;
     }
 
@@ -58,7 +57,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.menu_favorites_button:
+            case R.id.menu_fav_action_button:
                 Intent intent = new Intent(this, FavoritesActivity.class);
                 startActivity(intent);
                 break;

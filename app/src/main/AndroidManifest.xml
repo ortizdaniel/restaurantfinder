@@ -61,7 +61,9 @@
 
         <activity
             android:name=".activities.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppBarTheme"></activity>
     </application>
 
 </manifest>
