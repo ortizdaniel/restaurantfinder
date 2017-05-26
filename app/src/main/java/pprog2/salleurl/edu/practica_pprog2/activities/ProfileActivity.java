@@ -2,6 +2,10 @@ package pprog2.salleurl.edu.practica_pprog2.activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.media.ExifInterface;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
@@ -13,6 +17,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.model.User;
@@ -121,6 +129,49 @@ public class ProfileActivity extends AppCompatActivity {
                     Bundle bundle = data.getExtras();
                     Bitmap image = (Bitmap) bundle.get("data");
                     if (image != null && profileImage != null) {
+
+                        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+                        image.compress(Bitmap.CompressFormat.PNG, 0, bos);
+                        byte[] bitmapdata = bos.toByteArray();
+                        ByteArrayInputStream bs = new ByteArrayInputStream(bitmapdata);
+
+                        ExifInterface ei = null;
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                            try {
+                                ei = new ExifInterface(bs);
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                                return;
+                            }
+
+                            int orientation = ei.getAttributeInt(ExifInterface.TAG_ORIENTATION,
+                                    ExifInterface.ORIENTATION_UNDEFINED);
+
+                            switch (orientation) {
+
+                                case ExifInterface.ORIENTATION_ROTATE_90:
+                                    image = rotateImage(image, 90);
+                                    break;
+
+                                case ExifInterface.ORIENTATION_ROTATE_180:
+                                    image = rotateImage(image, 180);
+                                    break;
+
+                                case ExifInterface.ORIENTATION_ROTATE_270:
+                                    image = rotateImage(image, 270);
+                                    break;
+
+                                case ExifInterface.ORIENTATION_NORMAL:
+
+                                default:
+                                    break;
+                            }
+                        } else {
+                            if (image.getHeight() < image.getWidth()) {
+                                image = rotateImage(image, -90);
+                            }
+                        }
+
                         profileImage.setImageBitmap(image);
                         this.image = image;
                     }
@@ -129,4 +180,10 @@ public class ProfileActivity extends AppCompatActivity {
         }
     }
 
+    private Bitmap rotateImage(Bitmap source, float angle) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(angle);
+        return Bitmap.createBitmap(source, 0, 0, source.getWidth(), source.getHeight(),
+                matrix, true);
+    }
 }
