@@ -86,6 +86,11 @@ public class ProfileActivity extends AppCompatActivity {
         startActivityForResult(intent, TAKE_PICTURE);
     }
 
+    public void onFavoritesClick(MenuItem item) {
+        Intent intent = new Intent(this, FavoritesActivity.class);
+        startActivity(intent);
+    }
+
     public void onSaveButtonClick(View view) {
         user.setNombre(name.getText().toString());
         user.setApellidos(surname.getText().toString());
