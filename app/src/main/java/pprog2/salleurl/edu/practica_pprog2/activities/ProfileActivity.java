@@ -97,6 +97,7 @@ public class ProfileActivity extends AppCompatActivity {
     public void onFavoritesClick(MenuItem item) {
         Intent intent = new Intent(this, FavoritesActivity.class);
         startActivity(intent);
+        finish();
     }
 
     public void onSaveButtonClick(View view) {

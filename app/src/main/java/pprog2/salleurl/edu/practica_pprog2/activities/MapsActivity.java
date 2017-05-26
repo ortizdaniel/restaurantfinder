@@ -60,6 +60,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             case R.id.menu_fav_action_button:
                 Intent intent = new Intent(this, FavoritesActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             case R.id.menu_profile_action_button:
                 Intent profileIntent = new Intent(this, ProfileActivity.class);

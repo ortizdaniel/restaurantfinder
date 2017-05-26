@@ -169,6 +169,7 @@ public class FavoritesActivity extends AppCompatActivity {
             case R.id.activity_favorites_menu_profile_button:
                 Intent intent = new Intent(this, ProfileActivity.class);
                 startActivity(intent);
+                finish();
                 break;
             default:
                 break;

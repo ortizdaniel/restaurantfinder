@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import pprog2.salleurl.edu.practica_pprog2.R;
 import pprog2.salleurl.edu.practica_pprog2.activities.DescriptionActivity;
+import pprog2.salleurl.edu.practica_pprog2.activities.FavoritesActivity;
 import pprog2.salleurl.edu.practica_pprog2.model.FoodLocal;
 
 /**
@@ -71,5 +72,8 @@ public class FoodLocalsAdapter extends ArrayAdapter<FoodLocal> implements Adapte
         bundle.putParcelable("FOOD_LOCAL", foodlocals.get(position));
         intent.putExtras(bundle);
         context.startActivity(intent);
+        if (context instanceof FavoritesActivity) {
+            ((FavoritesActivity) context).finish();
+        }
     }
 }
