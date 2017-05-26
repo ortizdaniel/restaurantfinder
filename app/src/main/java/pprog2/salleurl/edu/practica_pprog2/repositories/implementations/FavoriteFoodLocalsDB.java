@@ -133,11 +133,10 @@ public class FavoriteFoodLocalsDB implements FavoriteFoodLocalsRepo {
     public List<Comment> getComments(String foodLocal) {
         DatabaseHelper helper = DatabaseHelper.getInstance(context);
         String whereClause = COLUMN_COMMENT_LOCAL + " =?";
-        String orderByClause = COLUMN_COMMENT + " ASC";
         String[] whereArgs = {foodLocal};
 
         Cursor cursor = helper.getReadableDatabase().query(COMMENT_TABLE_NAME, null, whereClause,
-                whereArgs, null, null, orderByClause, null);
+                whereArgs, null, null, null, null);
         ArrayList<Comment> commentsLocal = new ArrayList<>();
 
         if (cursor != null) {
