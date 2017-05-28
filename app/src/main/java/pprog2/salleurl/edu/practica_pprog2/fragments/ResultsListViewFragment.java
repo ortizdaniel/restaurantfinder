@@ -77,7 +77,7 @@ public class ResultsListViewFragment extends Fragment {
                     e.printStackTrace();
                 }
             } else {
-                if (type.equals("ALL")) {
+                if (type.equals(getString(R.string.all_types))) {
                     foodLocals.add(l);
                 } else if (type.equals(l.getType())) {
                     foodLocals.add(l);

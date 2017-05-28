@@ -52,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        setTitle(getString(R.string.profile));
         profileImage = (ImageView) findViewById(R.id.imgProfile);
         takePicture = (Button) findViewById(R.id.btnTakePictureProfile);
         name = (EditText) findViewById(R.id.txtNameProfile);

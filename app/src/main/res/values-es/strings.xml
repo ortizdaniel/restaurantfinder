@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name"></string>
+
+    <!-- Strings related to login -->
+    <string name="username">Nombre de usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="logo">Logo</string>
+    <string name="login">Inicio Session</string>
+    <string name="register">Registro</string>
+    <string name="image_place">Imagen del sitio</string>
+    <string name="map_button">Boton del mapa</string>
+    <string name="add_comment">Añadir comentario</string>
+    <string name="send">Enviar</string>
+    <string name="profile">Perfil</string>
+    <string name="favorite">Favorito</string>
+    <string name="no_login">Error: No se ha introducido el login</string>
+    <string name="no_password">Error: No hay contraseña</string>
+    <string name="unable_login">Error: login/contraseña erroneo</string>
+
+    <string name="please_wait">Por favor espere</string>
+    <string name="spinner_Title">ActionBar Spinner</string>
+
+    <!-- Strings related to Search Activity -->
+    <string name="search_activity_title"></string>
+    <string name="favorite_button_title">Favoritos</string>
+    <string name="profile_button_title">Perfil</string>
+    <string name="search_geolocation_button_desc">Boton para mostrar restaurantes en el radio indicado</string>
+    <string name="search_clear_button_desc">Boton para limpiar el texto de la busqueda</string>
+    <string name="search_search_text_input_hint">Busca &#8230;</string>
+    <string name="search_search_radius_text_view">Radio de busqueda</string>
+    <string name="search_radius_km_text_view">1 km</string>
+    <string name="search_search_button">Busca</string>
+    <string name="search_recent_searches">Busquedas Recientes</string>
+    <string name="search_search_keyboard_button">Busca</string>
+    <string name="title_activity_login">Inicia Session</string>
+    <string name="search_no_locations_found">Ningun local encontrado</string>
+    <string name="search_recent_longitude">Lon</string>
+    <string name="search_recent_latitude">Lat</string>
+    <string name="search_recent_radius">Radio</string>
+    <string name="search_recent_is_empty_error">El texto de busqueda esta vacio!</string>
+    <string name="longitude_abbreviation">Lon</string>
+    <string name="latitude_abbreviation">Lat</string>
+    <string name="radius_abbreviation">Radio</string>
+    <string name="all_types">TODOS</string>
+    <string name="only_open">SOLO ABIERTOS</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hola fragmento vacio</string>
+    <string name="title_activity_favorites"></string>
+
+
+    <string name="take_picture">Tomar foto</string>
+    <string name="name">Nombre</string>
+    <string name="surname">Apellido</string>
+    <string name="email">Email</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="description">Descripcion</string>
+    <string name="accept_terms">Acepta los terminos y condiciones</string>
+    <string name="fields_empty">Todos los campos deben ser rellenados para registrarse</string>
+    <string name="registered">Has sido registrado correctamente</string>
+    <string name="error_repeat_email">El email que estas intentando introducir ya existe</string>
+    <string name="password_mismatch">Las contraseñas no coinciden</string>
+    <string name="terms_not_accepted">Debes aceptar los terminos y condiciones para registrarte</string>
+    <string name="save">Guardar</string>
+    <string name="edit">Editar perfil</string>
+    <string name="information_updated_success">Actualizado correctamente</string>
+    <string name="information_update_error">No se pudo actualizar la informacion correctamente</string>
+
+    <string name="unable_comment">Debes añadir un comentario para enviarlo</string>
+    <string name="comments">Comentarios</string>
+    <string name="title_activity_maps">Mapa</string>
+
+
+</resources>
