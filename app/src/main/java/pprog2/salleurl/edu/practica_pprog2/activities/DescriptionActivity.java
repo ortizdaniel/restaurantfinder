@@ -74,6 +74,7 @@ public class DescriptionActivity extends AppCompatActivity {
             localRatingBar.setRating((float)foodLocal.getRating());
             if(favoriteFoodLocalsRepo.isFavorite(MainActivity.getActualUser().getEmail(),foodLocal)){
                 favButton.setImageResource(R.drawable.favorite);
+                favorited = true;
             }
         }
 
