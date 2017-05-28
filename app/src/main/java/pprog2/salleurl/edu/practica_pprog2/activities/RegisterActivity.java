@@ -82,9 +82,19 @@ public class RegisterActivity extends AppCompatActivity {
             char sex = isMale.isChecked() ? User.MALE : User.FEMALE;
             String description = txtDescription.getText().toString();
 
-            if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() ||
+            /*if (name.isEmpty() || surname.isEmpty() || email.isEmpty() || password.isEmpty() ||
                     description.isEmpty()) {
                 Toast.makeText(this, str(R.string.fields_empty), Toast.LENGTH_LONG).show();
+                return;
+            }*/
+
+            if (email.isEmpty()) {
+                Toast.makeText(this, str(R.string.email_empty), Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            if (password.isEmpty()) {
+                Toast.makeText(this, str(R.string.password_empty), Toast.LENGTH_LONG).show();
                 return;
             }
 

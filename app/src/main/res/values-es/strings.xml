@@ -73,6 +73,8 @@
     <string name="unable_comment">Debes añadir un comentario para enviarlo</string>
     <string name="comments">Comentarios</string>
     <string name="title_activity_maps">Mapa</string>
+    <string name="email_empty">Por favor introduce tu correo electrónico!</string>
+    <string name="password_empty">Por favor introduce una contraseña!</string>
 
 
 </resources>

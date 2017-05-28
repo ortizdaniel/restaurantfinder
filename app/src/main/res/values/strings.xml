@@ -72,6 +72,8 @@
     <string name="unable_comment">You must add a comment to send it</string>
     <string name="comments">Comments</string>
     <string name="title_activity_maps">Map</string>
+    <string name="email_empty">Please write your email!</string>
+    <string name="password_empty">Please type in a password!</string>
 
 
 </resources>
